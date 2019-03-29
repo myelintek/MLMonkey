@@ -2,90 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50a035d1-f498-482a-82e4-9cba8e07d858" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/.idea/benchmark_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/config/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/model/sysinfo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/scenario.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/scheduler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/all_reduce_benchmark.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/all_reduce_benchmark_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/allreduce.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/allreduce_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/batch_allreduce.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/benchmark_cnn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/benchmark_cnn_distributed_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/benchmark_cnn_distributed_test_runner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/benchmark_cnn_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/cnn_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/cnn_util_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/coco_metric.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/convnet_builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/datasets.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/flags.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/alexnet_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/densenet_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/experimental/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/experimental/deepspeech.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/experimental/official_ncf_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/googlenet_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/inception_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/lenet_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/mobilenet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/mobilenet_conv_blocks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/mobilenet_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/mobilenet_v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/model_config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/nasnet_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/nasnet_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/nasnet_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/official_resnet_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/overfeat_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/resnet_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/resnet_model_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/ssd_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/trivial_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/vgg_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/platforms/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/platforms/default/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/platforms/default/util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/platforms/util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/preprocessing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/run_tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/ssd_constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/ssd_dataloader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00000-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00001-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00002-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00003-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00004-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00005-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00006-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/train-00007-of-00008" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/validation-00000-of-00002" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/fake_tf_record_data/validation-00001-of-00002" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/images/black_image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/images/white_image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_data/tfrecord_image_generator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/test_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/tf_cnn_benchmarks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/variable_mgr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/variable_mgr_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/variable_mgr_util_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/views/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/views/benchmark.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/model/sysinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/model/sysinfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/scenario.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/scenario.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/scheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/scheduler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/api/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/views/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/api/view.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,41 +23,44 @@
     <session id="1380692362">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="3" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Dockerfile" value="1" />
+          <entry key="Dockerfile" value="2" />
           <entry key="ini" value="1" />
-          <entry key="py" value="23" />
+          <entry key="py" value="25" />
           <entry key="yaml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Dockerfile" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="23" />
+          <entry key="Python" value="25" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Dockerfile" value="24" />
-          <entry key="dummy" value="6" />
+          <entry key="Dockerfile" value="55" />
+          <entry key="dummy" value="12" />
           <entry key="ini" value="17" />
-          <entry key="py" value="8097" />
+          <entry key="py" value="9617" />
           <entry key="txt" value="4" />
           <entry key="yaml" value="186" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="51" />
-          <entry key="Python" value="8097" />
+          <entry key="Dockerfile" value="31" />
+          <entry key="PLAIN_TEXT" value="57" />
+          <entry key="Python" value="9617" />
           <entry key="YAML" value="186" />
         </counts>
       </usages-collector>
@@ -142,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/status.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+            <state relative-caret-position="270">
+              <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
                 <marker date="1553177023385" expanded="true" signature="1640:1696" ph="..." />
@@ -155,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            <state relative-caret-position="216">
+              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -167,15 +96,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/scenario.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2232">
-              <caret line="127" column="41" selection-start-line="127" selection-start-column="41" selection-end-line="127" selection-end-column="41" />
+            <state relative-caret-position="972">
+              <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
-                <marker date="1553245492806" expanded="true" signature="92:93" ph="..." />
-                <marker date="1553245492806" expanded="true" signature="843:1095" ph="..." />
-                <marker date="1553245492806" expanded="true" signature="2325:2398" ph="..." />
-                <marker date="1553245492806" expanded="true" signature="2398:2399" ph="..." />
-                <marker date="1553245492806" expanded="true" signature="2398:2404" ph="..." />
+                <marker date="1553676995564" expanded="true" signature="852:925" ph="..." />
+                <marker date="1553676995564" expanded="true" signature="1671:1672" ph="..." />
+                <marker date="1553676995564" expanded="true" signature="1671:1677" ph="..." />
               </folding>
             </state>
           </provider>
@@ -184,28 +111,51 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/scheduler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="76" column="26" selection-start-line="76" selection-start-column="26" selection-end-line="76" selection-end-column="26" />
+            <state relative-caret-position="1386">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1553352236241" expanded="true" signature="105:110" ph="..." />
-                <marker date="1553352236241" expanded="true" signature="197:758" ph="..." />
-                <marker date="1553352236241" expanded="true" signature="783:871" ph="..." />
-                <marker date="1553352236241" expanded="true" signature="2124:2128" ph="..." />
-                <marker date="1553352236241" expanded="true" signature="2266:2299" ph="..." />
+                <marker date="1553675705479" expanded="true" signature="110:115" ph="..." />
+                <marker date="1553675705479" expanded="true" signature="202:844" ph="..." />
+                <marker date="1553675705479" expanded="true" signature="869:957" ph="..." />
+                <marker date="1553675705479" expanded="true" signature="2209:2213" ph="..." />
+                <marker date="1553675705479" expanded="true" signature="2351:2384" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webapp/views/benchmark.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+            <state relative-caret-position="486">
+              <caret line="27" column="21" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webapp/api/view.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2167">
+              <caret line="152" column="42" lean-forward="true" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="42" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
+                <marker date="1553862547134" expanded="true" signature="3158:3580" ph="..." />
+                <marker date="1553862547134" expanded="true" signature="4198:4210" ph="..." />
+                <marker date="1553862547134" expanded="true" signature="4255:4260" ph="..." />
+                <marker date="1553862547134" expanded="true" signature="4317:4322" ph="..." />
+                <marker date="1553862547134" expanded="true" signature="4373:4378" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -213,13 +163,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webapp/model/sysinfo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+            <state relative-caret-position="648">
+              <caret line="148" column="17" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="17" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
-                <marker date="1553135265887" expanded="true" signature="1590:1595" ph="..." />
-                <marker date="1553135265887" expanded="true" signature="1691:1692" ph="..." />
-                <marker date="1553135265887" expanded="true" signature="1691:1696" ph="..." />
+                <marker date="1553862123071" expanded="true" signature="3900:3905" ph="..." />
+                <marker date="1553862123071" expanded="true" signature="3900:4130" ph="..." />
+                <marker date="1553862123071" expanded="true" signature="4219:4220" ph="..." />
+                <marker date="1553862123071" expanded="true" signature="4219:4224" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapp/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -230,8 +193,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Setup Script" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -242,6 +205,7 @@
       <find>a</find>
       <find>params</find>
       <find>,</find>
+      <find>param</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -259,24 +223,27 @@
         <option value="$PROJECT_DIR$/webapp/scenarios.py" />
         <option value="$PROJECT_DIR$/webapp/config/__init__.py" />
         <option value="$PROJECT_DIR$/webapp/config/config_file.py" />
-        <option value="$PROJECT_DIR$/webapp/model/sysinfo.py" />
         <option value="$PROJECT_DIR$/webapp/task.py" />
         <option value="$PROJECT_DIR$/webapp/model/scheduler.py" />
-        <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/webapp/__init__.py" />
         <option value="$PROJECT_DIR$/webapp/status.py" />
         <option value="$PROJECT_DIR$/webapp/Scheduler.py" />
-        <option value="$PROJECT_DIR$/webapp/app.py" />
-        <option value="$PROJECT_DIR$/webapp/scenario.py" />
-        <option value="$PROJECT_DIR$/webapp/scheduler.py" />
         <option value="$PROJECT_DIR$/webapp/views/benchmark.py" />
+        <option value="$PROJECT_DIR$/webapp/api/benchmark.py" />
+        <option value="$PROJECT_DIR$/constant.py" />
+        <option value="$PROJECT_DIR$/webapp/app.py" />
+        <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/webapp/__init__.py" />
+        <option value="$PROJECT_DIR$/webapp/scheduler.py" />
+        <option value="$PROJECT_DIR$/webapp/scenario.py" />
+        <option value="$PROJECT_DIR$/webapp/model/sysinfo.py" />
+        <option value="$PROJECT_DIR$/webapp/constants.py" />
+        <option value="$PROJECT_DIR$/webapp/api/view.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="146" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="x" value="29" />
+    <option name="width" value="1924" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -285,7 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -302,6 +268,12 @@
               <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
               <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
+              <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -312,22 +284,22 @@
             </path>
             <path>
               <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.CVS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\PycharmProjects\benchmark_service\webapp" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -341,7 +313,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.config">
+  <component name="RunManager" selected="Python.__init__">
+    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="benchmark_service" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webapp" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webapp/__init__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="benchmark_service" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -409,11 +402,13 @@
       <item itemvalue="Python.test" />
       <item itemvalue="Python.app" />
       <item itemvalue="Python.config" />
+      <item itemvalue="Python.__init__" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.config" />
+        <item itemvalue="Python.__init__" />
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.config" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -432,23 +427,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.18071654" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="2" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" visible="true" weight="0.15309446" />
       <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.18329719" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.18241042" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -485,20 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/tf_cnn_benchmarks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -517,8 +499,8 @@
     <entry file="file://$PROJECT_DIR$/webapp/views/home.py" />
     <entry file="file://$PROJECT_DIR$/webapp/status.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        <state relative-caret-position="270">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
             <marker date="1553177023385" expanded="true" signature="1640:1696" ph="..." />
@@ -528,8 +510,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        <state relative-caret-position="216">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
@@ -538,53 +520,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/scenario.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2232">
-          <caret line="127" column="41" selection-start-line="127" selection-start-column="41" selection-end-line="127" selection-end-column="41" />
+        <state relative-caret-position="972">
+          <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
-            <marker date="1553245492806" expanded="true" signature="92:93" ph="..." />
-            <marker date="1553245492806" expanded="true" signature="843:1095" ph="..." />
-            <marker date="1553245492806" expanded="true" signature="2325:2398" ph="..." />
-            <marker date="1553245492806" expanded="true" signature="2398:2399" ph="..." />
-            <marker date="1553245492806" expanded="true" signature="2398:2404" ph="..." />
+            <marker date="1553676995564" expanded="true" signature="852:925" ph="..." />
+            <marker date="1553676995564" expanded="true" signature="1671:1672" ph="..." />
+            <marker date="1553676995564" expanded="true" signature="1671:1677" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/scheduler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="76" column="26" selection-start-line="76" selection-start-column="26" selection-end-line="76" selection-end-column="26" />
+        <state relative-caret-position="1386">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1553352236241" expanded="true" signature="105:110" ph="..." />
-            <marker date="1553352236241" expanded="true" signature="197:758" ph="..." />
-            <marker date="1553352236241" expanded="true" signature="783:871" ph="..." />
-            <marker date="1553352236241" expanded="true" signature="2124:2128" ph="..." />
-            <marker date="1553352236241" expanded="true" signature="2266:2299" ph="..." />
+            <marker date="1553675705479" expanded="true" signature="110:115" ph="..." />
+            <marker date="1553675705479" expanded="true" signature="202:844" ph="..." />
+            <marker date="1553675705479" expanded="true" signature="869:957" ph="..." />
+            <marker date="1553675705479" expanded="true" signature="2209:2213" ph="..." />
+            <marker date="1553675705479" expanded="true" signature="2351:2384" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webapp/model/sysinfo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        <state relative-caret-position="648">
+          <caret line="148" column="17" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="17" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-            <marker date="1553135265887" expanded="true" signature="1590:1595" ph="..." />
-            <marker date="1553135265887" expanded="true" signature="1691:1692" ph="..." />
-            <marker date="1553135265887" expanded="true" signature="1691:1696" ph="..." />
+            <marker date="1553862123071" expanded="true" signature="3900:3905" ph="..." />
+            <marker date="1553862123071" expanded="true" signature="3900:4130" ph="..." />
+            <marker date="1553862123071" expanded="true" signature="4219:4220" ph="..." />
+            <marker date="1553862123071" expanded="true" signature="4219:4224" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/views/benchmark.py">
+    <entry file="file://$PROJECT_DIR$/webapp/api/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        <state relative-caret-position="2167">
+          <caret line="152" column="42" lean-forward="true" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="42" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+            <marker date="1553862547134" expanded="true" signature="3158:3580" ph="..." />
+            <marker date="1553862547134" expanded="true" signature="4198:4210" ph="..." />
+            <marker date="1553862547134" expanded="true" signature="4255:4260" ph="..." />
+            <marker date="1553862547134" expanded="true" signature="4317:4322" ph="..." />
+            <marker date="1553862547134" expanded="true" signature="4373:4378" ph="..." />
           </folding>
         </state>
       </provider>

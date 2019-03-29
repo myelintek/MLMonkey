@@ -1,6 +1,7 @@
 from collections import OrderedDict
 
-from webapp import scenario
+import scenario
+import constants
 import os
 import json
 
@@ -10,11 +11,12 @@ class Scheduler:
         self._tasks = OrderedDict()
 
     def load_past_tasks(self):
-        file = os.environ('json_file')
+        file = constants.SCENARIOS_JSON
         with open(file, 'r') as json_file:
             datas = json.load(json_file)
         for d in datas:
-            scenario.Scenario(
+            task = scenario.Scenario(
+                name=d['name'],
                 data_dir=d['data_dir'],
                 num_gpus=d['num_gpus'],
                 batch_size=d['batch_size'],
@@ -24,7 +26,7 @@ class Scheduler:
                 optimizer=d['optimizer'],
                 data_format=d['data_format'],
                 num_epochs=d['num_epochs'])
-
+            self._tasks[task.id()] = task
 
     def add_task(self, task):
         self._tasks[task.id()] = task
@@ -36,11 +38,11 @@ class Scheduler:
 
     def json_handler(self, task, action='r'):
 
-        file = os.environ('json_file')
+        file = constants.SCENARIOS_JSON
         if action is 'w':
             d = {
                 'id': task.id(),
-                'name': task.name(),
+                'name': task.name,
                 'status': task.status,
                 'scenario': task.scenario.json_dict()
             }

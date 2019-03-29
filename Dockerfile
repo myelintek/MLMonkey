@@ -25,6 +25,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libzmq3-dev \
         pkg-config \
         python-dev \
+        smartmontools \
+        dmidecode \
         rsync \
         software-properties-common \
         unzip \
@@ -53,6 +55,7 @@ RUN curl -fSsL -O https://bootstrap.pypa.io/get-pip.py && \
 
 RUN pip --no-cache-dir install \
         Pillow \
+        flask \
         h5py \
         ipykernel \
         keras_applications \
