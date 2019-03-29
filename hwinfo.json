@@ -1,0 +1,76 @@
+{
+    "cpu": "Intel(R) Core(TM) i7-6850K CPU @ 3.60GHz",
+    "disk": {
+        "countSize": 1024,
+        "disk_list": [
+            {
+                "capacity": "[1.02 TB]",
+                "device": "INTEL SSDSC2KW010T8",
+                "node": "/dev/sda"
+            }
+        ]
+    },
+    "gpu": [
+        "GPU 0: GeForce GTX 1080 (UUID: GPU-538004c7-4004-9d9d-0f1e-d6e614c1e501)",
+        "GPU 1: GeForce GTX 1080 (UUID: GPU-4c1d264b-c7fa-79f9-0e2b-8e3f6878c781)",
+        "GPU 2: GeForce GTX 1080 (UUID: GPU-8557c4e0-b320-4954-c0a9-7b0e97147be5)"
+    ],
+    "memory": [
+        {
+            "Locator": "DIMM_A1",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        },
+        {
+            "Locator": "DIMM_A2",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        },
+        {
+            "Locator": "DIMM_B1",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        },
+        {
+            "Locator": "DIMM_B2",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        },
+        {
+            "Locator": "DIMM_C1",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        },
+        {
+            "Locator": "DIMM_C2",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        },
+        {
+            "Locator": "DIMM_D1",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        },
+        {
+            "Locator": "DIMM_D2",
+            "Manufacturer": "<BAD INDEX>",
+            "Size": "16384 MB",
+            "Speed": "2400 MHz",
+            "Type": "DDR4"
+        }
+    ]
+}
