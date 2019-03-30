@@ -5,9 +5,9 @@ from status import Status
 
 # ref https://github.com/Alwayswithme/sysinfo
 from model import sysinfo
-from webapp import config
-from webapp.scenario import Scenario, Task
-from webapp.app import scheduler
+from mlmonkey import config
+from mlmonkey.scenario import Scenario, Task
+from mlmonkey.app import scheduler
 
 blueprint = flask.Blueprint(__name__, __name__)
 

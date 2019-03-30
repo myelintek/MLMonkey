@@ -1,0 +1,14 @@
+Pillow
+flask
+h5py
+ipykernel
+keras_applications
+keras_preprocessing
+matplotlib
+mock
+numpy
+scipy
+sklearn
+pandas
+gevent
+tensorflow-gpu==1.12.0

@@ -39,10 +39,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm /usr/lib/x86_64-linux-gnu/libcudnn_static_v7.a
 
 RUN apt-get update && \
-        apt-get install nvinfer-runtime-trt-repo-ubuntu1604-4.0.1-ga-cuda9.0 && \
+        apt-get install -y nvinfer-runtime-trt-repo-ubuntu1604-4.0.1-ga-cuda9.0 && \
         apt-get update && \
-        apt-get install libnvinfer4=4.1.2-1+cuda9.0 && \
-        apt-get install libnvinfer-dev=4.1.2-1+cuda9.0
+        apt-get install -y libnvinfer4=4.1.2-1+cuda9.0 && \
+        apt-get install -y libnvinfer-dev=4.1.2-1+cuda9.0
 
 # Link NCCL libray and header where the build script expects them.
 RUN mkdir /usr/local/cuda-9.0/lib &&  \
@@ -92,8 +92,8 @@ RUN mkdir /bazel && \
     rm -f /bazel/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
 
 # Download and build TensorFlow.
-WORKDIR /tensorflow
-RUN git clone --branch=r1.12 --depth=1 https://github.com/tensorflow/tensorflow.git .
+#WORKDIR /tensorflow
+#RUN git clone --branch=r1.12 --depth=1 https://github.com/tensorflow/tensorflow.git .
 
 # Configure the build for our CUDA configuration.
 ENV CI_BUILD_PYTHON python
@@ -107,22 +107,22 @@ ENV TF_CUDNN_VERSION=7
 # NCCL 2.x
 ENV TF_NCCL_VERSION=2
 
-RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
-    LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs:${LD_LIBRARY_PATH} \
-    tensorflow/tools/ci_build/builds/configured GPU \
-    bazel build -c opt --copt=-mavx --config=cuda \
-	--cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" \
-        tensorflow/tools/pip_package:build_pip_package && \
-    rm /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/pip && \
-    pip --no-cache-dir install --upgrade /tmp/pip/tensorflow-*.whl && \
-    rm -rf /tmp/pip && \
-    rm -rf /root/.cache
+#RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
+#    LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs:${LD_LIBRARY_PATH} \
+#    tensorflow/tools/ci_build/builds/configured GPU \
+#    bazel build -c opt --copt=-mavx --config=cuda \
+#	--cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" \
+#        tensorflow/tools/pip_package:build_pip_package && \
+#    rm /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
+#    bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/pip && \
+#    pip --no-cache-dir install --upgrade /tmp/pip/tensorflow-*.whl && \
+#    rm -rf /tmp/pip && \
+#    rm -rf /root/.cache
 # Clean up pip wheel and Bazel cache when done.
 
 # Download tensorflow benchmark
 WORKDIR /
-RUN git clone --branch=cnn_tf_v1.12_compatible --depth=1 https://github.com/tensorflow/benchmarks.git .
+RUN git clone --branch=cnn_tf_v1.12_compatible --depth=1 https://github.com/tensorflow/benchmarks.git
 
 # TensorBoard
 EXPOSE 6006

@@ -1,13 +1,13 @@
 import flask
 import json
 import uuid
-from status import Status
+from mlmonkey.status import Status
 # ref https://github.com/Alwayswithme/sysinfo
-from model import sysinfo
+from mlmonkey.model import sysinfo
 
-from webapp import constants
-import scenario
-import scheduler
+from mlmonkey import constants
+from mlmonkey import scenario
+from mlmonkey import scheduler
 
 blueprint = flask.Blueprint(__name__, __name__)
 
