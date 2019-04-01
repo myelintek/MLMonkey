@@ -19,6 +19,7 @@ def home():
 
 @blueprint.route('/hwinfo', methods=['GET', 'POST'])
 def show_hw_info():
+    file = constants.SCENARIOS_JSON
     if flask.request.method == 'POST':
         gpus = sysinfo.get_graphics_card_info()
         cpu = sysinfo.get_cpu_hwinfo()
@@ -31,7 +32,6 @@ def show_hw_info():
             'disk': disk,
             'gpu': gpus
         }
-        file = constants.SCENARIOS_JSON
         with open(file, 'w') as json_file:
             json.dump(data, json_file)
 

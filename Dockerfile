@@ -124,6 +124,10 @@ ENV TF_NCCL_VERSION=2
 WORKDIR /
 RUN git clone --branch=cnn_tf_v1.12_compatible --depth=1 https://github.com/tensorflow/benchmarks.git
 
+RUN git clone https://github.com/myelintek/mlmonkey && \
+    cd mlmonkey && \
+    pip install -e .
+
 # TensorBoard
 EXPOSE 6006
 # python-flask
