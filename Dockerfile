@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         rsync \
         software-properties-common \
         unzip \
+        vim \
         zip \
         zlib1g-dev \
         wget \
@@ -133,4 +134,4 @@ EXPOSE 6006
 # python-flask
 EXPOSE 5000
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["runserver"]

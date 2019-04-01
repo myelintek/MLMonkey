@@ -1,6 +1,7 @@
 import flask
 import json
 import uuid
+from flask import make_response
 from mlmonkey.status import Status
 # ref https://github.com/Alwayswithme/sysinfo
 from mlmonkey.model import sysinfo
@@ -122,15 +123,10 @@ def run_bandwidth():
         info = sysinfo.init_bandwidth()
         with open(file_path, 'w') as file:
             file.write(info)
-    else:
-        try:
-            with open(file_path, 'r') as file:
-                info = file.read()
-        except:
-            info = sysinfo.init_bandwidth()
-            with open(file_path, 'w') as file:
-                file.write(info)
-        return info
+
+    with open(file_path, 'r') as file:
+        info = file.read()
+    return make_response(info)
 
 
 
@@ -139,21 +135,15 @@ def run_bandwidth():
 @blueprint.route('/topology', methods=['POST', 'GET'])
 def run_topology():
     # get folder or filepath by config
-
     file_path = constants.TOPOLOGY_TXT
     if flask.request.method == 'POST':
         info = sysinfo.init_topology()
         with open(file_path, 'w') as file:
             file.write(info)
-    else:
-        try:
-            with open(file_path, 'r') as file:
-                info = file.read()
-        except:
-            info = sysinfo.init_topology()
-            with open(file_path, 'w') as file:
-                file.write(info)
-        return info
+
+    with open(file_path, 'r') as file:
+        info = file.read()
+    return make_response(info)
 
 
 @blueprint.errorhandler(401)
