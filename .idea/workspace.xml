@@ -1,17 +1,658 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50a035d1-f498-482a-82e4-9cba8e07d858" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/webapp/constants.py" afterDir="false" />
+    <list default="true" id="e273bb32-9112-4533-9e8e-8cd57e67318f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/model/images/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/model/images/benchmark.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/model/images/image_classification.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/model/object_detection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/model/recommendation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/task.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/benchmark_readme_template.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_logs/gnmt_example.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_logs/ncf_example.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_logs/resnet_example.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_logs/ssd_example.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/ncf/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/ncf/preproc_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/ncf/run_and_time_zpu1x.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/ncf/setup_zpu1x.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/resnet/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/resnet/preproc_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/resnet/run_and_time_zpu1x.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/resnet/run_and_time_zpu8x.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/resnet/setup_zpu1x.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/code/resnet/setup_zpu8x.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/entry.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_10.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_12.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_13.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_14.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_15.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_16.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_17.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_18.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_19.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_20.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_21.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_22.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_23.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_24.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_25.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_26.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_27.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_28.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_29.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_30.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_31.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_32.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_33.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_34.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_35.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_36.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_37.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_38.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_39.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_40.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_41.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_42.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_43.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_44.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_45.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_46.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_47.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_48.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_49.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_50.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_51.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_52.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_53.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_54.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_55.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_56.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_57.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_58.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_59.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_60.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_61.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_62.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_63.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_64.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_65.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_66.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_67.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_68.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_69.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_70.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_71.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_72.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_73.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_74.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_75.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_76.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_77.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_78.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_79.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_80.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_81.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_82.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_83.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_84.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_85.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_86.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_87.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_88.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_89.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_9.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_90.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_91.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_92.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_93.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_94.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_95.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_96.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_97.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_98.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/ncf/result_99.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/resnet/result_0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/resnet/result_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/resnet/result_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/resnet/result_3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu1x/resnet/result_4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu8x/entry.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu8x/resnet/result_0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu8x/resnet/result_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu8x/resnet/result_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu8x/resnet/result_3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/results/zpu8x/resnet/result_4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/example_submission/submission.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/_gnmt_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/_maskrcnn_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/_ncf_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/_resnet_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/_ssd_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/_transformer_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/mlperf_log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/resnet_log_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/test_tag_set.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/mlperf_compliance/tf_mlperf_log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/crypto_requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/examples/example_report.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/checks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/checks_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/crypto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/test_crypto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/unittest_files/10_mixed_results/result_9.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/verify_submission.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/data_gen.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/graph_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/graph_analysis_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/graph_expansion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/graph_expansion_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/graph_reduction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/graph_reduction_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/random_matrix_ops.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/random_matrix_ops_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/run.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/run_expansion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/test_util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/test_util_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/data_generation/fractal_graph_expansions/util_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/download_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/log_stitch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/Dockerfile.cpu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/Dockerfile.gpu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/benchmark/datastore/schema/benchmark_metric.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/benchmark/datastore/schema/benchmark_run.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/imagenet_main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/imagenet_preprocessing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/imagenet_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/layer_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/resnet_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/resnet/resnet_run_loop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/arg_parsers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/arg_parsers/parsers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/arg_parsers/parsers_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/export/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/export/export.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/export/export_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/benchmark_uploader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/hooks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/hooks_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/hooks_helper_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/hooks_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/logger_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/metric_hook.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/logs/metric_hook_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/misc/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/misc/model_helpers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/misc/model_helpers_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/integration.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/pylint.rcfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/dense/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/dense/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/dense/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/dense/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/dense/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/uniform_random/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/uniform_random/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/uniform_random/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/uniform_random/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/reference_data_test/uniform_random/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-1_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-1_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-1_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-1_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-1_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-2_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-2_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-2_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-2_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_projection_version-2_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-1_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-1_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-1_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-1_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-1_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-2_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-2_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-2_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-2_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_bottleneck_version-2_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-1_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-1_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-1_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-1_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-1_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-2_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-2_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-2_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-2_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_projection_version-2_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-1_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-1_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-1_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-1_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-1_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-2_width-8_channels-4/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-2_width-8_channels-4/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-2_width-8_channels-4/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-2_width-8_channels-4/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch-size-32_building_version-2_width-8_channels-4/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch_norm/expected_graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch_norm/model.ckpt.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch_norm/model.ckpt.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch_norm/results.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data/resnet/batch_norm/tf_version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/reference_data_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official/utils/testing/scripts/presubmit.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/official_diff.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/preprocess.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/run.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/tensorflow/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/image_classification/verify_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/install_cuda_docker.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/download_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/install.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/.flake8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/.github/ISSUE_TEMPLATE/bug-report.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/.github/ISSUE_TEMPLATE/feature-request.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/.github/ISSUE_TEMPLATE/questions-help-support.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/ABSTRACTIONS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/INSTALL.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/MODEL_ZOO.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/TROUBLESHOOTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/configs/e2e_mask_rcnn_R_50_FPN_1x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/demo/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/demo/demo_e2e_mask_rcnn_R_50_FPN_1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/demo/demo_e2e_mask_rcnn_X_101_32x8d_FPN_1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/demo/predictor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/demo/webcam.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/docker/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/docker/docker-jupyter/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/docker/docker-jupyter/jupyter_notebook_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/config/defaults.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/config/paths_catalog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/ROIAlign.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/ROIPool.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/SigmoidFocalLoss.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cpu/ROIAlign_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cpu/nms_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cpu/vision.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cuda/ROIAlign_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cuda/ROIPool_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cuda/SigmoidFocalLoss_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cuda/nms.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/cuda/vision.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/nms.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/csrc/vision.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/collate_batch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/coco.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/concat_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/evaluation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/evaluation/coco/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/evaluation/coco/coco_eval.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/evaluation/voc/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/evaluation/voc/voc_eval.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/list_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/datasets/voc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/samplers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/samplers/distributed.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/samplers/grouped_batch_sampler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/samplers/iteration_based_batch_sampler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/transforms/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/transforms/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/data/transforms/transforms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/engine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/engine/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/engine/tester.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/engine/trainer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/batch_norm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/misc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/nms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/roi_align.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/roi_pool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/sigmoid_focal_loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/layers/smooth_l1_loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/backbone/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/backbone/backbone.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/backbone/fpn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/backbone/resnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/balanced_positive_negative_sampler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/box_coder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/detector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/detector/detectors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/detector/generalized_rcnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/make_layers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/matcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/poolers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/registry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/box_head/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/box_head/box_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/box_head/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/box_head/loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/box_head/roi_box_feature_extractors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/box_head/roi_box_predictors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/keypoint_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/roi_keypoint_feature_extractors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/keypoint_head/roi_keypoint_predictors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/mask_head/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/mask_head/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/mask_head/loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/mask_head/mask_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/mask_head/roi_mask_feature_extractors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/mask_head/roi_mask_predictors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/roi_heads/roi_heads.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/anchor_generator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/retinanet/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/retinanet/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/retinanet/loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/retinanet/retinanet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/rpn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/rpn/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/modeling/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/solver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/solver/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/solver/lr_scheduler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/structures/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/structures/bounding_box.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/structures/boxlist_ops.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/structures/image_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/structures/keypoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/structures/segmentation_mask.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/c2_model_loading.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/collect_env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/comm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/cv2_util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/imports.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/metric_logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/miscellaneous.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/mlperf_logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/model_serialization.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/model_zoo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/maskrcnn_benchmark/utils/registry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tests/checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tests/test_data_samplers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tests/test_metric_logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tools/cityscapes/convert_cityscapes_to_coco.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tools/cityscapes/instances2dict_with_polygons.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tools/test_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tools/train_mlperf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/pytorch/tools/train_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/object_detection/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/download_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/convert.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/ncf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/negative_sampling_cpp/negative_sampling.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/negative_sampling_cpp/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/negative_sampling_cpp/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/neumf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/pytorch/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/recommendation/verify_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reference_results.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/.pylintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/WORKSPACE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/cloud_logging.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/coords.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/dual_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/features.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/go.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/mcts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/oneoffs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/oneoffs/modelstats.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/oneoffs/resign_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/oneoffs/training_curve.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/preprocessing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/requirements-analysis.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/sgf_wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/strategies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/symmetries.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/testing/Dockerfile.v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/testing/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/testing/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/testing/bootstrap_v2.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/example_game.sgf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_coords.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_dual_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_features.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_go.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_mcts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_preprocessing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_sgf_wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_shipname.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_strategies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_symmetries.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/tests/test_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/minigo/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/run.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/reinforcement/tensorflow/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/download_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/run.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/scripts/docker/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/scripts/docker/interactive.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/scripts/filter_dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/data/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/data/dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/data/sampler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/data/tokenizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/inference/beam_search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/inference/inference.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/models/attention.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/models/decoder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/models/encoder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/models/gnmt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/models/seq2seq_base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/train/fp_optimizers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/train/lr_scheduler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/train/smoothing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/train/trainer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/seq2seq/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/pytorch/translate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/rnn_translator/verify_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/sentiment_analysis/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/sentiment_analysis/download.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/sentiment_analysis/download_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/sentiment_analysis/paddle/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/sentiment_analysis/paddle/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/sentiment_analysis/verify.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/sentiment_analysis/verify_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/download_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/base_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/bind_launch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/coco.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/config_DGX1_32.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/config_DGX1_multinode.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/config_DGX1_singlenode.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/distributed.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/eval.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/mlperf_logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/run.sub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/ssd300.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/single_stage_detector/ssd/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/bucketing_sampler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/data-LibriSpeech-ref-cksum.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/data_loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/librispeech.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/merge_manifests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/data/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/download_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/labels.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/decoder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/docker/Dockerfile.gpu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/docker/base.gpu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/docker/build-docker.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/docker/run-dev.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/eval_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/params.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/pytorch/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/speech_recognition/verify_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/data_download.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/download_data.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/process_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/run_and_time.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/run_preprocessing.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/run_training.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/compute_bleu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/compute_bleu_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/data_download.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/attention_layer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/beam_search.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/beam_search_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/embedding_layer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/ffn_layer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/model_params.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/model_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/model_utils_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/model/transformer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/transformer_main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/translate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/utils/dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/utils/metrics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/utils/tokenizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/utils/tokenizer_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer/vocab/vocab.translate_ende_wmt32k.32768.subwords" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/tensorflow/transformer_diff.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/translation/verify_dataset.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mlmonkey/utils/datasets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/benchmark_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/benchmark_service.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/model/sysinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/model/sysinfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/scenario.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/scenario.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/scheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/scheduler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/api/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/views/benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/api/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/api/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/api/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/model/sysinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/utils/sysinfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/scenario.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/scenario.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/scheduler.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/scheduler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/views/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mlmonkey/tools/mlperf/compliance/verify_submission/mlperf_submission_helper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlmonkey/views/benchmark.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,48 +661,42 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="1380692362">
+    <session id="1543776504">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.5" value="3" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Dockerfile" value="2" />
-          <entry key="ini" value="1" />
-          <entry key="py" value="25" />
-          <entry key="yaml" value="1" />
+          <entry key="Dockerfile" value="1" />
+          <entry key="md" value="1" />
+          <entry key="py" value="11" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Dockerfile" value="1" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="25" />
-          <entry key="YAML" value="1" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Python" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Dockerfile" value="55" />
-          <entry key="dummy" value="12" />
-          <entry key="ini" value="17" />
-          <entry key="py" value="9617" />
-          <entry key="txt" value="4" />
-          <entry key="yaml" value="186" />
+          <entry key="Dockerfile" value="115" />
+          <entry key="py" value="2679" />
+          <entry key="txt" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Dockerfile" value="31" />
-          <entry key="PLAIN_TEXT" value="57" />
-          <entry key="Python" value="9617" />
-          <entry key="YAML" value="186" />
+          <entry key="Dockerfile" value="115" />
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="Python" value="2679" />
         </counts>
       </usages-collector>
     </session>
@@ -69,58 +704,102 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/status.py">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+            <state relative-caret-position="300">
+              <caret line="112" column="33" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="33" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
-                <marker date="1553177023385" expanded="true" signature="1640:1696" ph="..." />
+                <element signature="e#0#13#0" expanded="true" />
+                <marker date="1555311762099" expanded="true" signature="2875:2990" ph="..." />
+                <marker date="1555311762099" expanded="true" signature="3012:3126" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/app.py">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/model/images/benchmark.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="403">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
+                <marker date="1555302016615" expanded="true" signature="84:89" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/scenario.py">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/model/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+            <state relative-caret-position="108">
+              <caret line="6" column="75" selection-start-line="6" selection-start-column="75" selection-end-line="6" selection-end-column="75" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
-                <marker date="1553676995564" expanded="true" signature="852:925" ph="..." />
-                <marker date="1553676995564" expanded="true" signature="1671:1672" ph="..." />
-                <marker date="1553676995564" expanded="true" signature="1671:1677" ph="..." />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/scheduler.py">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/model/recommendation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1386">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="288">
+              <caret line="43" column="59" lean-forward="true" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <marker date="1553675705479" expanded="true" signature="110:115" ph="..." />
-                <marker date="1553675705479" expanded="true" signature="202:844" ph="..." />
-                <marker date="1553675705479" expanded="true" signature="869:957" ph="..." />
-                <marker date="1553675705479" expanded="true" signature="2209:2213" ph="..." />
-                <marker date="1553675705479" expanded="true" signature="2351:2384" ph="..." />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/model/images/image_classification.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/model/object_detection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="56" column="80" selection-end-line="79" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <marker date="1555317502602" expanded="true" signature="2401:2470" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/utils/datasets.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <marker date="1555321013155" expanded="true" signature="154:155" ph="..." />
+                <marker date="1555321013155" expanded="true" signature="441:446" ph="..." />
+                <marker date="1555321013155" expanded="true" signature="1388:1389" ph="..." />
+                <marker date="1555321013155" expanded="true" signature="2061:2090" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mlmonkey/constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -129,61 +808,16 @@
         <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="486">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webapp/api/view.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2167">
-              <caret line="152" column="42" lean-forward="true" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-                <marker date="1553862547134" expanded="true" signature="3158:3580" ph="..." />
-                <marker date="1553862547134" expanded="true" signature="4198:4210" ph="..." />
-                <marker date="1553862547134" expanded="true" signature="4255:4260" ph="..." />
-                <marker date="1553862547134" expanded="true" signature="4317:4322" ph="..." />
-                <marker date="1553862547134" expanded="true" signature="4373:4378" ph="..." />
-              </folding>
+              <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/constants.py">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/model/sysinfo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="148" column="17" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-                <marker date="1553862123071" expanded="true" signature="3900:3905" ph="..." />
-                <marker date="1553862123071" expanded="true" signature="3900:4130" ph="..." />
-                <marker date="1553862123071" expanded="true" signature="4219:4220" ph="..." />
-                <marker date="1553862123071" expanded="true" signature="4219:4224" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webapp/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="234">
+              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -193,19 +827,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Setup Script" />
         <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>s</find>
-      <find>r</find>
-      <find>a</find>
-      <find>params</find>
-      <find>,</find>
-      <find>param</find>
+      <find>tensorflow</find>
+      <find>error</find>
+      <find>gpu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -214,39 +844,27 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/webapp/config/config.py" />
-        <option value="$PROJECT_DIR$/webapp/config/jobs_config.py" />
-        <option value="$PROJECT_DIR$/webapp/utils/config.py" />
-        <option value="$PROJECT_DIR$/webapp/config.yaml" />
-        <option value="$PROJECT_DIR$/config.ini" />
-        <option value="$PROJECT_DIR$/webapp/scenarios.py" />
-        <option value="$PROJECT_DIR$/webapp/config/__init__.py" />
-        <option value="$PROJECT_DIR$/webapp/config/config_file.py" />
-        <option value="$PROJECT_DIR$/webapp/task.py" />
-        <option value="$PROJECT_DIR$/webapp/model/scheduler.py" />
-        <option value="$PROJECT_DIR$/webapp/status.py" />
-        <option value="$PROJECT_DIR$/webapp/Scheduler.py" />
-        <option value="$PROJECT_DIR$/webapp/views/benchmark.py" />
-        <option value="$PROJECT_DIR$/webapp/api/benchmark.py" />
-        <option value="$PROJECT_DIR$/constant.py" />
-        <option value="$PROJECT_DIR$/webapp/app.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/model/benchmark.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/model/images/__init__.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/model/images/benchmark.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/model/__init__.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/model/images/image_classification.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/task.py" />
         <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/webapp/__init__.py" />
-        <option value="$PROJECT_DIR$/webapp/scheduler.py" />
-        <option value="$PROJECT_DIR$/webapp/scenario.py" />
-        <option value="$PROJECT_DIR$/webapp/model/sysinfo.py" />
-        <option value="$PROJECT_DIR$/webapp/constants.py" />
-        <option value="$PROJECT_DIR$/webapp/api/view.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/mlmonkey/model/object_detection.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/model/recommendation.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/constants.py" />
+        <option value="$PROJECT_DIR$/mlmonkey/utils/datasets.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="29" />
+    <option name="x" value="168" />
+    <option name="y" value="-10" />
     <option name="width" value="1924" />
     <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -256,35 +874,44 @@
         <subPane>
           <expand>
             <path>
-              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
+              <item name="MLMonkey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MLMonkey" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="MLMonkey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MLMonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="mlmonkey" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="MLMonkey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MLMonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="mlmonkey" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="benchmark_service" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="MLMonkey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MLMonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="mlmonkey" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="benchmark_service" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="MLMonkey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MLMonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="mlmonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MLMonkey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MLMonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="mlmonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MLMonkey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MLMonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="mlmonkey" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -294,11 +921,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="vcs.CVS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\MLMonkey\MLMonkey\mlmonkey\tools" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\PycharmProjects\benchmark_service\webapp" />
+      <recent name="F:\MLMonkey\MLMonkey\mlmonkey\utils" />
+      <recent name="F:\MLMonkey\MLMonkey\mlmonkey\model\images" />
+      <recent name="F:\MLMonkey\MLMonkey\mlmonkey" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -313,138 +946,37 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.__init__">
-    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="benchmark_service" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webapp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webapp/__init__.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="benchmark_service" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webapp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webapp/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="benchmark_service" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webapp/config" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webapp/config/config.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="benchmark_service" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.test" />
-      <item itemvalue="Python.app" />
-      <item itemvalue="Python.config" />
-      <item itemvalue="Python.__init__" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.__init__" />
-        <item itemvalue="Python.app" />
-        <item itemvalue="Python.config" />
-        <item itemvalue="Python.test" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
-    <configuration>C:\Users\User\AppData\Roaming\Subversion</configuration>
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="50a035d1-f498-482a-82e4-9cba8e07d858" name="Default Changelist" comment="" />
-      <created>1552977955653</created>
+      <changelist id="e273bb32-9112-4533-9e8e-8cd57e67318f" name="Default Changelist" comment="" />
+      <created>1554886598435</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1552977955653</updated>
+      <updated>1554886598435</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.18071654" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="2" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" visible="true" weight="0.15309446" />
-      <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.18241042" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15542677" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -453,148 +985,140 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/config/config.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/config/jobs_config.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/config.yaml" />
-    <entry file="file://$PROJECT_DIR$/config.ini" />
-    <entry file="file://$PROJECT_DIR$/webapp/utils/config.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/models/model_config.py">
+    <entry file="file://$PROJECT_DIR$/mlmonkey/scenario.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1274">
-          <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/task.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/config/config_file.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/model/scheduler.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/config/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/tf_cnn_benchmarks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="47" column="49" lean-forward="true" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/__main__.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/tools/tf_cnn_benchmarks/benchmark_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-738">
-          <caret line="80" column="59" selection-start-line="80" selection-start-column="59" selection-end-line="80" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/views/home.py" />
-    <entry file="file://$PROJECT_DIR$/webapp/status.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        <state relative-caret-position="1141">
+          <caret line="146" column="19" selection-start-line="111" selection-start-column="8" selection-end-line="146" selection-end-column="19" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
-            <marker date="1553177023385" expanded="true" signature="1640:1696" ph="..." />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/app.py">
+    <entry file="file://$PROJECT_DIR$/mlmonkey/api/view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        <state relative-caret-position="180">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/scenario.py">
+    <entry file="file://$PROJECT_DIR$/mlmonkey/tools/mlperf/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlmonkey/model/images/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+        <state relative-caret-position="72">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <marker date="1553676995564" expanded="true" signature="852:925" ph="..." />
-            <marker date="1553676995564" expanded="true" signature="1671:1672" ph="..." />
-            <marker date="1553676995564" expanded="true" signature="1671:1677" ph="..." />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/scheduler.py">
+    <entry file="file://$PROJECT_DIR$/mlmonkey/model/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        <state relative-caret-position="108">
+          <caret line="6" column="75" selection-start-line="6" selection-start-column="75" selection-end-line="6" selection-end-column="75" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1553675705479" expanded="true" signature="110:115" ph="..." />
-            <marker date="1553675705479" expanded="true" signature="202:844" ph="..." />
-            <marker date="1553675705479" expanded="true" signature="869:957" ph="..." />
-            <marker date="1553675705479" expanded="true" signature="2209:2213" ph="..." />
-            <marker date="1553675705479" expanded="true" signature="2351:2384" ph="..." />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlmonkey/model/images/benchmark.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1555302016615" expanded="true" signature="84:89" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlmonkey/task.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="112" column="33" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1555311762099" expanded="true" signature="2875:2990" ph="..." />
+            <marker date="1555311762099" expanded="true" signature="3012:3126" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="21" />
+          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/__init__.py">
+    <entry file="file://$PROJECT_DIR$/mlmonkey/model/object_detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="56" column="80" selection-end-line="79" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1555317502602" expanded="true" signature="2401:2470" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlmonkey/model/images/image_classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlmonkey/model/recommendation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="43" column="59" lean-forward="true" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mlmonkey/constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/constants.py">
+    <entry file="file://$PROJECT_DIR$/mlmonkey/utils/datasets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/model/sysinfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="148" column="17" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="17" />
+        <state relative-caret-position="396">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <marker date="1553862123071" expanded="true" signature="3900:3905" ph="..." />
-            <marker date="1553862123071" expanded="true" signature="3900:4130" ph="..." />
-            <marker date="1553862123071" expanded="true" signature="4219:4220" ph="..." />
-            <marker date="1553862123071" expanded="true" signature="4219:4224" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/api/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2167">
-          <caret line="152" column="42" lean-forward="true" selection-start-line="152" selection-start-column="42" selection-end-line="152" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-            <marker date="1553862547134" expanded="true" signature="3158:3580" ph="..." />
-            <marker date="1553862547134" expanded="true" signature="4198:4210" ph="..." />
-            <marker date="1553862547134" expanded="true" signature="4255:4260" ph="..." />
-            <marker date="1553862547134" expanded="true" signature="4317:4322" ph="..." />
-            <marker date="1553862547134" expanded="true" signature="4373:4378" ph="..." />
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1555321013155" expanded="true" signature="154:155" ph="..." />
+            <marker date="1555321013155" expanded="true" signature="441:446" ph="..." />
+            <marker date="1555321013155" expanded="true" signature="1388:1389" ph="..." />
+            <marker date="1555321013155" expanded="true" signature="2061:2090" ph="..." />
           </folding>
         </state>
       </provider>

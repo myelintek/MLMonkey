@@ -67,6 +67,7 @@ RUN pip --no-cache-dir install \
         scipy \
         sklearn \
         pandas \
+        requests \
         && \
     python -m ipykernel.kernelspec
 
@@ -91,6 +92,17 @@ RUN mkdir /bazel && \
     ./bazel-$BAZEL_VERSION-installer-linux-x86_64.sh && \
     cd / && \
     rm -f /bazel/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
+
+# install pytorch cp27 v1.0.0, torchvision v0.2.2
+RUN pip --no-cache-dir install \
+        cu90/torch-1.0.0-cp27-cp27mu-linux_x86_64.whl \
+        torchvision==0.2.2
+
+# install pycocotools
+RUN git clone https://github.com/cocodataset/cocoapi.git \
+ && cd cocoapi/PythonAPI \
+ && git reset --hard ed842bffd41f6ff38707c4f0968d2cfd91088688 \
+ && python setup.py build_ext install
 
 # Download and build TensorFlow.
 #WORKDIR /tensorflow

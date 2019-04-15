@@ -1,8 +1,13 @@
-from status import Status
 import gevent.event
 import sys
 import os
 import uuid
+import pickle
+import shutil
+import traceback
+from mlmonkey import constants
+from mlmonkey.status import Status
+
 
 class Scenario:
     def __init__(self,
@@ -32,15 +37,35 @@ class Scenario:
         self.status = status
         self.aborted = gevent.event.Event()
 
+        self._dir = os.path.join(constants.JOBS_DIR, self._id)
+        self.SAVE_FILE = 'status.pickle'
+
+        os.mkdir(self._dir)
+
     def id(self):
         return self._id
 
-    def path(self):
-        if not self.id():
+    def dir(self):
+        """getter for _dir"""
+        return self._dir
+
+    def path(self, filename, relative=False):
+        """
+        Returns a path to the given file
+        Arguments:
+        filename -- the requested file
+        Keyword arguments:
+        relative -- If False, return an absolute path to the file
+                    If True, return a path relative to the jobs directory
+        """
+        if not filename:
             return None
-
-        path = os.path.join(os.environ('dir'), self.id())
-
+        if os.path.isabs(filename):
+            path = filename
+        else:
+            path = os.path.join(self._dir, filename)
+            if relative:
+                path = os.path.relpath(path, constants.JOBS_DIR)
         return str(path).replace("\\", "/")
 
     def json_dict(self):
@@ -59,6 +84,29 @@ class Scenario:
             'status': self.status
         }
         return d
+
+    def load(self):
+        pass
+
+    def save(self):
+        """
+        Saves the job to disk as a pickle file
+        Suppresses errors, but returns False if something goes wrong
+        """
+        try:
+            # use tmpfile so we don't abort during pickle dump (leading to EOFErrors)
+            tmpfile_path = self.path(self.SAVE_FILE + '.tmp')
+            with open(tmpfile_path, 'wb') as tmpfile:
+                pickle.dump(self, tmpfile)
+            file_path = self.path(self.SAVE_FILE)
+            shutil.move(tmpfile_path, file_path)
+            return True
+        except KeyboardInterrupt:
+            pass
+        except Exception as e:
+            print('Caught %s while saving job %s: %s' % (type(e).__name__, self.id(), e))
+            traceback.print_exc()
+        return False
 
     def task_arguments(self):
         train_exec = 'tf_cnn_benchmarks.py'
@@ -127,3 +175,5 @@ class Scenario:
             self.aborted.set()
 
         return True
+
+

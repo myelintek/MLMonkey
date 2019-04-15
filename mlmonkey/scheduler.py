@@ -1,14 +1,20 @@
 from collections import OrderedDict
 
-import scenario
-import constants
+import gevent
 import os
 import json
+import time
+
+from mlmonkey import scenario
+from mlmonkey import constants
+from mlmonkey.status import Status
 
 
 class Scheduler:
     def __init__(self):
         self._tasks = OrderedDict()
+
+        self.shutdown = gevent.event.Event()
 
     def load_past_tasks(self):
         file = constants.SCENARIOS_JSON
@@ -83,3 +89,42 @@ class Scheduler:
 
     def abort_task(self):
         pass
+
+    def start(self):
+        """
+        Start the Scheduler
+        Returns True on success
+        """
+        if self.running:
+            return True
+
+        gevent.spawn(self.main_thread)
+
+        self.running = True
+        return True
+
+    def stop(self):
+        """
+        Stop the Scheduler
+        Returns True if the shutdown was graceful
+        """
+        self.shutdown.set()
+        wait_limit = 5
+        start = time.time()
+        while self.running:
+            if time.time() - start > wait_limit:
+                return False
+            time.sleep(0.1)
+        return True
+
+    def main_thread(self):
+        self.load_past_tasks()
+        while not self.shutdown.is_set():
+            for task in self._tasks:
+                if task.status == Status.INIT:
+                    task.status = Status.RUN
+                    gevent.spawn_later()
+                    gevent.queue
+
+                if task.status == Status.WAIT:
+                    task.status == Status.RUN

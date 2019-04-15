@@ -1,12 +1,11 @@
 import flask
 import json
-import uuid
 from flask import make_response
 from mlmonkey.status import Status
 # ref https://github.com/Alwayswithme/sysinfo
-from mlmonkey.model import sysinfo
 
 from mlmonkey import constants
+from mlmonkey.utils import sysinfo
 from mlmonkey import scenario
 from mlmonkey import scheduler
 
