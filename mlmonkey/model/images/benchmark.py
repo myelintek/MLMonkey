@@ -55,5 +55,11 @@ class TfBenchmarkModel(Task):
 
         return args
 
+    def download_dataset(self):
+        pass
+
+    def verify_dataset(self):
+        pass
+
     def get_dataset(self):
         return True

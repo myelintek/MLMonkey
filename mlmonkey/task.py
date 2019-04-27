@@ -112,6 +112,13 @@ class Task:
         """
         raise NotImplementedError
 
+    def verify_dataset(self):
+        """
+        verity dataset
+        Raises exceptions
+        """
+        raise NotImplementedError
+
     def get_dataset(self):
         """
         get the dataset

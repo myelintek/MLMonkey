@@ -49,15 +49,13 @@ class ObjectDetectionModel(Task):
         data_folder = os.path.join(tools_path, 'pytorch', 'datasets', 'coco')
         os.makedirs(data_folder)
 
-        coco_data = [['https://dl.fbaipublicfiles.com/detectron/coco/coco_annotations_minival.tgz',
-                      os.path.join(data_folder, 'coco_annotations_minival.tgz')],
-                     ['http://images.cocodataset.org/zips/train2014.zip', os.path.join(data_folder, 'train2014.zip')],
-                     ['http://images.cocodataset.org/zips/val2014.zip', os.path.join(data_folder, 'val2014.zip')],
-                     ['http://images.cocodataset.org/annotations/annotations_trainval2014.zip',
-                      os.path.join(data_folder, 'annotations_trainval2014.zip')]]
-        for url, path in coco_data:
-            datasets.download(url, path)
-            datasets.extract(path)
+        coco_data = ['https://dl.fbaipublicfiles.com/detectron/coco/coco_annotations_minival.tgz',
+                     'http://images.cocodataset.org/zips/train2014.zip',
+                     'http://images.cocodataset.org/zips/val2014.zip',
+                     'http://images.cocodataset.org/annotations/annotations_trainval2014.zip']
+        for url in coco_data:
+            file = datasets.download(url, model='object_detection', assign_path=data_folder)
+            datasets.extract(file)
 
     def get_dataset(self):
         datasets_2014 = ['datasets/coco/annotations', 'datasets/coco/train2014', 'datasets/coco/val2014']
@@ -77,3 +75,6 @@ class ObjectDetectionModel(Task):
             return False
 
         return True
+
+    def verify_dataset(self):
+        pass
