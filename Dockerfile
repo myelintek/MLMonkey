@@ -54,4 +54,6 @@ RUN cd / ; mkdir run_benchmarks ; cd run_benchmarks ; \
 git clone https://github.com/tensorflow/benchmarks.git ; \
 git clone https://github.com/mlperf/training.git
 
+COPY run.sh /run.sh
+
 ENTRYPOINT bash
