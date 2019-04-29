@@ -11,4 +11,4 @@ docker pull 140.96.29.39:5000/mlperf/object_detection:latest
 if [ ! -d "pytorch/datasets/coco" ]; then
   source download_dataset.sh
 fi
-script -c 'docker run --runtime nvidia -e NVIDIA_VISIBLE_DEVICES=2,3 -v /home/user/ana/:/workspace -it --rm --ipc=host mlperf/object_detection bash -c "cd mlperf/training/object_detection && ./install.sh && ./run_and_time.sh"' /workspace/logs/mlperf_object_detection.log
+script -c 'docker run --runtime nvidia -v $WORKDIR:/workspace -it --rm --ipc=host mlperf/object_detection bash -c "cd mlperf/training/object_detection && ./install.sh && ./run_and_time.sh"' /workspace/logs/mlperf_object_detection.log
