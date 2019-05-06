@@ -22,7 +22,8 @@ RUN apt-get install -y --no-install-recommends \
       zip \
       google-cloud-sdk \
       vim \
-      unzip
+      unzip \
+      time
 
 # Install / update Python and Python3
 #RUN apt-get install -y --no-install-recommends \
