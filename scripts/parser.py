@@ -40,6 +40,6 @@ for d in dirs:
     log_groups[d] = result_time 
 print(log_groups)
 for key1 in log_groups.keys():
-    with open('/workspace/web/%s.csv'%(key1), 'w') as f:
+    with open('/web/%s.csv'%(key1), 'w') as f:
         for key2 in log_groups[key1].keys():
             f.write("[%s, %s],\n"%(key2,log_groups[key1][key2]))

@@ -1,7 +1,7 @@
 #!/bin/bash
 #record hardware spec
-mkdir -p /workspace/web
-lshw -html > /workspace/web/specs.html
+mkdir -p /web
+lshw -html > /web/specs.html
 mkdir -p /tmp/logs
 cd /workspace
 mkdir -p mlperf
@@ -65,7 +65,7 @@ if [ ! -d "/workspace/mlperf/training" ] ; then
   git clone https://github.com/mlperf/training.git
 fi
 cd training/object_detection/
-cp /run_and_time_obj_detect.sh .
+cp /scripts/run_and_time_obj_detect.sh .
 chmod +x run_and_time_obj_detect.sh
 docker pull 140.96.29.39:5000/mlperf/object_detection:latest
 if [ ! -d "pytorch/datasets/coco" ] ; then
@@ -75,4 +75,4 @@ fi
 echo "Running ogject detection training on COCO"
 docker run --runtime nvidia -v $WORKDIR:/workspace -e MASTER_ADDR=localhost -e MASTER_PORT=4000 -e TIMEFORMAT=$TIMEFORMAT -it --rm --ipc=host 140.96.29.39:5000/mlperf/object_detection:latest bash -c 'cd mlperf/training/object_detection && ./install.sh && ./run_and_time_obj_detect.sh' &> /workspace/logs/COCO/mlperf.log
 #TODO copy parser.py inside container
-python /workspace/MLMonkey/parser.py
+python /scripts/parser.py

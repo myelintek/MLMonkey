@@ -57,6 +57,10 @@ RUN cd / ; mkdir run_benchmarks ; cd run_benchmarks ; \
 git clone https://github.com/tensorflow/benchmarks.git ; \
 git clone https://github.com/mlperf/training.git
 
-COPY run.sh /run.sh
+COPY scripts /scripts
+RUN mkdir -p /web && \
+    cd /scripts && \
+    mv index.html /web && \
+    mv lighttpd.conf /etc/lighttpd/lighttpd.conf 
 
 ENTRYPOINT bash
