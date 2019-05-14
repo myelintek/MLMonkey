@@ -23,7 +23,9 @@ RUN apt-get install -y --no-install-recommends \
       google-cloud-sdk \
       vim \
       unzip \
-      time
+      time \
+      lighttpd
+
 
 # Install / update Python and Python3
 #RUN apt-get install -y --no-install-recommends \
