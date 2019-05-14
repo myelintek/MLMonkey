@@ -12,7 +12,7 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN apt-get update
 
 # Install extras needed by most models
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get install -y \
       git \
       build-essential \
       software-properties-common \
@@ -24,7 +24,8 @@ RUN apt-get install -y --no-install-recommends \
       vim \
       unzip \
       time \
-      lighttpd
+      lighttpd \
+      lshw
 
 
 # Install / update Python and Python3

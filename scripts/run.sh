@@ -73,6 +73,8 @@ if [ ! -d "pytorch/datasets/coco" ] ; then
   source download_dataset.sh
 fi
 echo "Running ogject detection training on COCO"
-docker run --runtime nvidia -v $WORKDIR:/workspace -e MASTER_ADDR=localhost -e MASTER_PORT=4000 -e TIMEFORMAT=$TIMEFORMAT -it --rm --ipc=host 140.96.29.39:5000/mlperf/object_detection:latest bash -c 'cd mlperf/training/object_detection && ./install.sh && ./run_and_time_obj_detect.sh' &> /workspace/logs/COCO/mlperf.log
-#TODO copy parser.py inside container
+docker run --runtime nvidia -v $WORKDIR:/workspace -e MASTER_ADDR=localhost -e MASTER_PORT=4000 -e TIMEFORMAT="$TIMEFORMAT" -it --rm --ipc=host 140.96.29.39:5000/mlperf/object_detection:latest bash -c 'cd mlperf/training/object_detection && ./install.sh && ./run_and_time_obj_detect.sh' &> /workspace/logs/COCO/mlperf.log
+
+#parse logs to csv
+mkdir /web/csv
 python /scripts/parser.py
