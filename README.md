@@ -19,3 +19,5 @@ Folder structure for webpage should look like this:
                      topology.log
                  
 ```
+
+After script finishes whole `/web` folder is copied in `/workspace/logs/web`, so user can see visualization and hardware logs of older runs.
