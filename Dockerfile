@@ -1,8 +1,8 @@
-FROM tensorflow/tensorflow:nightly-gpu-py3
+FROM tensorflow/tensorflow:1.13.1-gpu-py3
 
 WORKDIR /root
 ENV HOME /root
-ARG tensorflow_pip_spec="tf-nightly-gpu"
+#ARG tensorflow_pip_spec="tf-nightly-gpu"
 
 # Add google-cloud-sdk to the source list
 RUN apt-get install -y curl
@@ -55,7 +55,7 @@ RUN wget -O /tmp/docker.tgz https://download.docker.com/linux/static/stable/x86_
     rm -rf /tmp/docker*
 
 RUN cd / ; mkdir run_benchmarks ; cd run_benchmarks ; \ 
-git clone https://github.com/tensorflow/benchmarks.git ; \
+git clone -b cnn_tf_v1.13_compatible https://github.com/tensorflow/benchmarks.git ; \
 git clone https://github.com/mlperf/training.git
 
 COPY scripts /scripts
