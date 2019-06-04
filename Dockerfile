@@ -56,7 +56,8 @@ RUN wget -O /tmp/docker.tgz https://download.docker.com/linux/static/stable/x86_
 
 RUN cd / ; mkdir run_benchmarks ; cd run_benchmarks ; \ 
 git clone -b cnn_tf_v1.13_compatible https://github.com/tensorflow/benchmarks.git ; \
-git clone https://github.com/mlperf/training.git
+git clone https://github.com/mlperf/training.git ; \
+git clone https://github.com/myelintek/results.git
 
 COPY scripts /scripts
 RUN mkdir -p /web && \
