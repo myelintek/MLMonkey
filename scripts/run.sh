@@ -7,70 +7,89 @@ cd /workspace
 mkdir -p mlperf
 mkdir -p logs
 cd logs
-mkdir -p gpu_scalability fp16 COCO
+mkdir -p gpu_scalability_fp16_nccl fp16_nccl COCO full_imagenet_nccl
 cd /run_benchmarks/benchmarks/scripts/tf_cnn_benchmarks
 #find max batch size for fp16 and fp32
-bs1gpu=( 1024 512 256 128 64 32 16 8 4 )
-echo "Running Imagenet with Resnet50 benchmark"
-echo "Checking maximum possible batch size for fp16 with synthetic data"
-for bsize in ${bs1gpu[@]}
-do
-  python tf_cnn_benchmarks.py --num_gpus=8 --batch_size=$bsize --num_batches=10 --model=resnet50 --variable_update=replicated --use_fp16 --data_format=NCHW --optimizer=momentum --gradient_repacking=8  &> /tmp/logs/find_max_bs_fp16.log
-  test $? -eq 0 && bsfp16=$bsize && echo "Maximum batch size for fp16 with synthetic data: $bsize" && break
-#  echo "ERROR: maximum batch size for fp16 synthetic data not found"
-done
+find_max_batch_size()
+{
+  bs1gpu=( 1024 512 256 128 64 32 16 8 4 )
+  echo "Running Imagenet with Resnet50 benchmark"
+  echo "Checking maximum possible batch size for fp16 with synthetic data"
+  for bsize in ${bs1gpu[@]}
+  do
+    python tf_cnn_benchmarks.py --num_gpus=8 --batch_size=$bsize --num_batches=10 --model=resnet50 --variable_update=replicated --use_fp16 --data_format=NCHW --optimizer=momentum --gradient_repacking=8  --all_reduce_spec=nccl &> /tmp/logs/find_max_bs_fp16.log
+    test $? -eq 0 && bsfp16=$bsize && echo "Maximum batch size for fp16 with synthetic data: $bsize" && break
+  done
 
-echo "Checking maximum possible batch size for fp32 with synthetic data"
-for bsize in ${bs1gpu[@]}
-do
-  python tf_cnn_benchmarks.py --num_gpus=8 --batch_size=$bsize --num_batches=10 --model=resnet50 --variable_update=replicated  &> /tmp/logs/find_max_bs_fp32.log
-  test $? -eq 0 && bsfp32=$bsize &&  echo "Maximum batch size for fp32 with synthetic data: $bsize" && break
-#  echo "ERROR: maximum batch size for fp32 synthetic data not found"
-done
+#  echo "Checking maximum possible batch size for fp32 with synthetic data"
+#  for bsize in ${bs1gpu[@]}
+#  do
+#    python tf_cnn_benchmarks.py --num_gpus=8 --batch_size=$bsize --num_batches=10 --model=resnet50 --variable_update=replicated  &> /tmp/logs/find_max_bs_fp32.log
+#    test $? -eq 0 && bsfp32=$bsize &&  echo "Maximum batch size for fp32 with synthetic data: $bsize" && break
+#    echo "ERROR: maximum batch size for fp32 synthetic data not found"
+#  done
+}
 
 export TIMEFORMAT='%E real,  %U user,  %S sys'
 
-#gpus scalability test
-num_gpus=( 1 2 4 8 ) 
-for gpus in ${num_gpus[@]}
-do
-  echo "Running gpu scalability test, output is redirected to /workspace/logs/gpu_scalability/$gpus.log"
-  ( time python tf_cnn_benchmarks.py --num_gpus=$gpus --batch_size=$bsfp32 --num_epochs=1 --model=resnet50 --variable_update=replicated --all_reduce_spec=nccl ) &> /workspace/logs/gpu_scalability/$gpus.log
-done
+gpus_scalability_test()
+{
+  num_gpus=( 1 2 4 8 ) 
+  for gpus in ${num_gpus[@]}
+  do
+    echo "Running gpu scalability test, output is redirected to /workspace/logs/gpu_scalability_fp16_nccl/$gpus.log"
+    ( time python tf_cnn_benchmarks.py --num_gpus=$gpus --batch_size=$bsfp16 --num_epochs=1 --model=resnet50 --variable_update=replicated --use_fp16 --all_reduce_spec=nccl ) &> /workspace/logs/gpu_scalability_fp16_nccl/$gpus.log
+  done
+}
+
 
 #fp16 real data
-echo "Running real imagenet test, logs are redirected to /workspace/logs/fp16/imagenet.log"
-if [ -d "/tfrecords" ] ; then
-  ( time python tf_cnn_benchmarks.py --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --nodistortions --gradient_repacking=8 --num_gpus=8 --num_batches=1000 --weight_decay=1e-4 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 --train_dir=/workspace/resnet50_train ) &> /workspace/logs/fp16/imagenet.log 2>&1
-  return_code=$?
-  echo $return_code
-  echo $bsfp16
-  #if there was an error, probably due to OOM, try reducing batch size
-  if [ $return_code != 0 ]  ; then
-    bsfp16=$(($bsfp16 / 2))
-    echo "Reduce batch size for real data: $bsfp16"
-    ( time python tf_cnn_benchmarks.py --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --nodistortions --gradient_repacking=8 --num_gpus=8 --num_batches=1000 --weight_decay=1e-4 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 --train_dir=/workspace/resnet50_train ) &> /workspace/logs/fp16/imagenet.log
+real_vs_synthetic_data()
+{
+  echo "Running real imagenet test, logs are redirected to /workspace/logs/fp16_nccl/imagenet.log"
+  if [ -d "/tfrecords" ] ; then
+    ( time python tf_cnn_benchmarks.py --all_reduce_spec=nccl --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --nodistortions --gradient_repacking=8 --num_gpus=8 --num_batches=1000 --weight_decay=1e-4 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 ) &> /workspace/logs/fp16_nccl/imagenet.log 2>&1
+    return_code=$?
+#    echo $return_code
+#    echo $bsfp16
+    #if there was an error, probably due to OOM, try reducing batch size
+    if [ $return_code != 0 ]  ; then
+      bsfp16=$(($bsfp16 / 2))
+      echo "Reduce batch size for real data: $bsfp16"
+      ( time python tf_cnn_benchmarks.py --all_reduce_spec=nccl --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --nodistortions --gradient_repacking=8 --num_gpus=8 --num_batches=1000 --weight_decay=1e-4 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 ) &> /workspace/logs/fp16_nccl/imagenet.log
+    fi
+  else
+    echo "ERROR: /tfrecords folder is not found" > /workspace/logs/fp16/imagenet.log
   fi
-else
-  echo "ERROR: /tfrecords folder is not found" > /workspace/logs/fp16/imagenet.log
-fi
+  #fp16 synthetic 
+  echo "Running synthetic data test, logs are redirected to /workspace/logs/fp16/synthetic.log"
+  ( time python tf_cnn_benchmarks.py --all_reduce_spec=nccl --num_gpus=8 --batch_size=$bsfp16 --num_batches=1000 --model=resnet50 --variable_update=replicated --use_fp16 ) &> /workspace/logs/fp16_nccl/synthetic.log
+}
 
-#fp16 synthetic 
-echo "Running synthetic data test, logs are redirected to /workspace/logs/fp16/synthetic.log"
-( time python tf_cnn_benchmarks.py --num_gpus=8 --batch_size=$bsfp16 --num_batches=1000 --model=resnet50 --variable_update=replicated --use_fp16 ) &> /workspace/logs/fp16/synthetic.log
+full_imagenet()
+{
+  #full imagenet training to 90 epoch with maximum batch size
+  echo "Running full imagenet training, /workspace/logs/full_imagenet/train_ep90_bs$bsfp16.log"
+  lr1=$(echo "scale=5; $bsfp16 / 256 * 8 / 10" | bc )
+  lr2=$(echo "scale=5; $lr1/10" | bc )
+  lr3=$(echo "scale=5; $lr2/10" | bc )
+  lr4=$(echo "scale=5; $lr3/10" | bc ) 
+  ( time python tf_cnn_benchmarks.py --all_reduce_spec=nccl --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --gradient_repacking=8 --num_gpus=8 --num_epochs=90 --weight_decay=4e-5 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 --train_dir=/workspace/resnet50_train_full_nccl --num_learning_rate_warmup_epochs=5 --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" ) &> /workspace/logs/full_imagenet_nccl/train_ep90_bs$bsfp16.log 
 
-#full imagenet training to 90 epoch with maximum batch size
-mkdir -p /workspace/logs/full_imagenet
-echo "Running full imagenet training, /workspace/logs/full_imagenet/train_ep90_bs$bsfp16.log"
-lr= $(( $bsfp16 / 256 * 8 * 0.1 ))
-( time python tf_cnn_benchmarks.py --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --gradient_repacking=8 --num_gpus=8 --num_epochs=90 --weight_decay=4e-5 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 --train_dir=/workspace/resnet50_train_full --num_learning_rate_warmup_epochs=5 --piecewise_learning_rate_schedule="$lr;30;$(($lr * 0.1));60;$(($lr * 0.01));80;$(($lr * 0.001))" ) &> /workspace/logs/full_imagenet/train_ep90_bs$bsfp16.log 
-
-python tf_cnn_benchmarks.py --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --gradient_repacking=8 --num_gpus=8 --num_epochs=90 --weight_decay=4e-5 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 --train_dir=/workspace/resnet50_train_full --num_learning_rate_warmup_epochs=5 --piecewise_learning_rate_schedule="$lr;30;$(($lr * 0.1));60;$(($lr * 0.01));80;$(($lr * 0.001))" --eval &> /workspace/logs/full_imagenet/val_ep90_bs$bsfp16.log
+  python tf_cnn_benchmarks.py --all_reduce_spec=nccl --data_format=NCHW --batch_size=$bsfp16 --model=resnet50 --optimizer=momentum --variable_update=replicated --gradient_repacking=8 --num_gpus=8 --num_epochs=1 --weight_decay=4e-5 --data_dir=/tfrecords/ --data_name=imagenet --use_fp16 --train_dir=/workspace/resnet50_train_full_nccl --num_learning_rate_warmup_epochs=5 --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" --eval &> /workspace/logs/full_imagenet_nccl/val_ep90_bs$bsfp16.log
+}
 
 #nvidia-optimized mlperf, default parameters
-#rnn_translator
-cd /run_benchmarks/results/v0.5.0/nvidia/submission/code/rnn_translator
-bash download_dataset.sh
+rnn_translator()
+{
+  cd /run_benchmarks/results/v0.5.0/nvidia/submission/code/rnn_translator
+  bash download_dataset.sh
+}
+
+find_max_batch_size
+gpus_scalability_test
+real_vs_synthetic_data
+full_imagenet
 
 
 
@@ -91,5 +110,5 @@ bash download_dataset.sh
 #docker run --runtime nvidia -v $WORKDIR:/workspace -e MASTER_ADDR=localhost -e MASTER_PORT=4000 -e TIMEFORMAT="$TIMEFORMAT" -it --rm --ipc=host 140.96.29.39:5000/mlperf/object_detection:latest bash -c 'cd mlperf/training/object_detection && ./install.sh && ./run_and_time_obj_detect.sh' &> /workspace/logs/COCO/mlperf.log
 
 #parse logs to csv
-mkdir /web/csv
-python /scripts/parser.py
+#mkdir /web/csv
+#python /scripts/parser.py
