@@ -25,7 +25,8 @@ RUN apt-get install -y \
       unzip \
       time \
       lighttpd \
-      lshw
+      lshw \
+      bc
 
 
 # Install / update Python and Python3

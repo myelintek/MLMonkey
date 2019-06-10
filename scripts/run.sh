@@ -37,7 +37,7 @@ gpus_scalability_test()
                   --model=resnet50 \
                   --variable_update=replicated \
                   --use_fp16 \
-                  --all_reduce_spec=nccl ) &> /workspace/logs/gpu_scalability_fp16/$gpus.log
+                  --all_reduce_spec=nccl ) &> /workspace/logs/gpu_scalability/$gpus.log
   done
 }
 
@@ -55,7 +55,7 @@ real_vs_synthetic_data()
                   --optimizer=momentum \
                   --variable_update=replicated \
                   --nodistortions \
-                  --gradient_repacking=8 \ 
+                  --gradient_repacking=8 \
                   --num_gpus=8 \
                   --num_batches=1000 \
                   --weight_decay=1e-4 \
@@ -68,16 +68,16 @@ real_vs_synthetic_data()
       bsfp16=$(($bsfp16 / 2))
       echo "Reduce batch size for real data: $bsfp16"
       ( time python tf_cnn_benchmarks.py \
-                    --all_reduce_spec=nccl \ 
+                    --all_reduce_spec=nccl \
                     --data_format=NCHW \
-                    --batch_size=$bsfp16 \ 
-                    --model=resnet50 \ 
+                    --batch_size=$bsfp16 \
+                    --model=resnet50 \
                     --optimizer=momentum \
                     --variable_update=replicated \
-                    --nodistortions \ 
+                    --nodistortions \
                     --gradient_repacking=8 \
-                    --num_gpus=8 \ 
-                    --num_batches=1000 \ 
+                    --num_gpus=8 \
+                    --num_batches=1000 \
                     --weight_decay=1e-4 \
                     --data_dir=/tfrecords/ \
                     --data_name=imagenet \
@@ -103,10 +103,10 @@ full_imagenet()
   #full imagenet training to 90 epoch with maximum batch size
   echo "Running full imagenet training, /workspace/logs/full_imagenet/train_ep90_bs$bsfp16.log"
   #scale lr according to batch size: batch_size=256, lr=0.1
-  lr1=$(echo "scale=5; $bsfp16 / 256 * 8 / 10" | bc )
-  lr2=$(echo "scale=5; $lr1/10" | bc )
-  lr3=$(echo "scale=5; $lr2/10" | bc )
-  lr4=$(echo "scale=5; $lr3/10" | bc ) 
+  lr1=$(echo "scale=4; $bsfp16 / 256 * 8 / 10" | bc )
+  lr2=$(echo "scale=4; $lr1/10" | bc )
+  lr3=$(echo "scale=4; $lr2/10" | bc )
+  lr4=$(echo "scale=4; $lr3/10" | bc ) 
   #train
   ( time python tf_cnn_benchmarks.py \
                 --all_reduce_spec=nccl \
@@ -158,12 +158,12 @@ rnn_translator()
   cd pytorch
   DATADIR=/workspace/datasets/data LOGDIR=/workspace/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
 }
-
+export bsfp16=128
 #find_max_batch_size
 #gpus_scalability_test
-#real_vs_synthetic_data
+real_vs_synthetic_data
 #full_imagenet
-rnn_translator
+#rnn_translator
 
 
 #mlperf COCO	
