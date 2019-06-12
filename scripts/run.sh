@@ -174,8 +174,8 @@ object_detection()
   docker run --runtime nvidia mlperf-nvidia:object_detection ./convert_c2_model.py
   DATADIR=$WORKDIR/datasets/coco LOGDIR=$WORKDIR/logs/object_detection  ./run.sub  
 }
-export bsfp16=128
-export WORKDIR=/home/hpc2/workspace #TODO pass it on container start
+#export bsfp16=128
+#export WORKDIR=/home/hpc2/workspace #TODO pass it on container start
 find_max_batch_size
 gpus_scalability_test
 real_vs_synthetic_data
