@@ -103,10 +103,10 @@ full_imagenet()
   #full imagenet training to 90 epoch with maximum batch size
   echo "Running full imagenet training, /workspace/logs/full_imagenet/train_ep90_bs$bsfp16.log"
   #scale lr according to batch size: batch_size=256, lr=0.1
-  lr1=$(echo "scale=4; $bsfp16 / 256 * 8 / 10" | bc )
-  lr2=$(echo "scale=4; $lr1/10" | bc )
-  lr3=$(echo "scale=4; $lr2/10" | bc )
-  lr4=$(echo "scale=4; $lr3/10" | bc ) 
+  lr1=$(echo "scale=6; $bsfp16 / 256 * 8 / 10" | bc )
+  lr2=$(echo "scale=6; $lr1/10" | bc )
+  lr3=$(echo "scale=6; $lr2/10" | bc )
+  lr4=$(echo "scale=6; $lr3/10" | bc ) 
   #train
   ( time python tf_cnn_benchmarks.py \
                 --all_reduce_spec=nccl \
@@ -150,21 +150,38 @@ full_imagenet()
 rnn_translator()
 {
   cd /run_benchmarks/results/v0.5.0/nvidia/submission/code/rnn_translator  
-  mkdir -p /workspace/datasets
-  export OUTPUT_DIR=/workspace/datasets
-  bash download_dataset.sh /workspace/datasets #TODO fix prints in pytorch/scripts/downloaders/filter_dataset.py
+  if [ ! -d "/workspace/datasets/rnn_translator" ] ; then
+    mkdir -p /workspace/datasets/rnn_translator
+    bash download_dataset.sh /workspace/datasets/rnn_translator
+  fi
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator mlperf-nvidia:rnn_translator
   cd pytorch
-  DATADIR=/workspace/datasets/data LOGDIR=/workspace/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
+  DATADIR=$WORKDIR/datasets/rnn_translator LOGDIR=$WORKDIR/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
+}
+
+object_detection()
+{
+  cd /run_benchmarks/results/v0.5.0/nvidia/submission/code/object_detection
+   if [ ! -d "/workspace/datasets/coco" ] ; then
+     ./download_dataset.sh
+   fi
+  ./download_weights.sh
+  cd pytorch
+  ./convert_c2_model.py
+  docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:object_detection
+  docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:object_detection mlperf-nvidia:object_detection
+  docker run --runtime nvidia mlperf-nvidia:object_detection ./convert_c2_model.py
+  DATADIR=$WORKDIR/datasets/coco LOGDIR=$WORKDIR/logs/object_detection  ./run.sub  
 }
 export bsfp16=128
-#find_max_batch_size
-#gpus_scalability_test
+export WORKDIR=/home/hpc2/workspace #TODO pass it on container start
+find_max_batch_size
+gpus_scalability_test
 real_vs_synthetic_data
-#full_imagenet
+full_imagenet
 #rnn_translator
-
+#object_detection
 
 #mlperf COCO	
 #cd /workspace/mlperf
