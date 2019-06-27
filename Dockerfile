@@ -26,7 +26,12 @@ RUN apt-get install -y \
       time \
       lighttpd \
       lshw \
-      bc
+      bc \
+      libnccl2=2.4.7-1+cuda10.0 \
+      libnccl-dev=2.4.7-1+cuda10.0 \
+      libcudnn7-dev=7.4.1.5-1+cuda10.0 \
+      cuda-curand-10-0 \
+      cuda-curand-dev-10-0
 
 
 # Install / update Python and Python3
