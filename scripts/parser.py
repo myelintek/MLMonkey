@@ -12,6 +12,7 @@ LOGS_PATH = os.path.join("/workspace", "logs")
 pattern = re.compile("(\d*.\d*) real")
 log_groups = {}
 
+TF_BENCHMARKS="tf_benchmarks"
 IMAGE_CLASSIFICATION="image_classification"
 RNN_TRANSLATOR="rnn_translator"
 OBJECT_DETECTION="object_detection"
@@ -20,7 +21,7 @@ SPEECH_RECOGNITION="speech_recognition"
 
 #ALL_CASES=(IMAGE_CLASSIFICATION, RNN_TRANSLATOR,
 #           OBJECT_DETECTION, SPEECH_RECOGNITION)
-ALL_CASES=(IMAGE_CLASSIFICATION, RNN_TRANSLATOR,
+ALL_CASES=(TF_BENCHMARKS, RNN_TRANSLATOR,
            OBJECT_DETECTION)
 
 
@@ -194,6 +195,7 @@ class Parser(Parser_Base):
         return self.results
 
 
+# RTR => rnn_transltor
 class Parser_RTR(Parser):
 
     def __init__(self, root_dir, case=''):
@@ -209,7 +211,8 @@ class Parser_RTR(Parser):
         return result
 
 
-class Parser_IMC(Parser):
+# TFB => Tensorflow benchmark
+class Parser_TFB(Parser):
 
     def __init__(self, root_dir, case=''):
         super().__init__(root_dir, case)
@@ -266,6 +269,7 @@ class Parser_IMC(Parser):
 # The parser will parse the cases in ALL_CASES under LOGS_PATH,
 # you can specify another log path by pass in the parameter and
 # case name.
+#
 # The output data structure is:
 # {
 #    case_name1:
@@ -283,7 +287,7 @@ class Parser_IMC(Parser):
 #           {'accuracy': ['"epoch": 5, "value": 24.04'],
 #            'run_final_utc': '2019-05-30T16:44:18',
 #            'run_start_utc': '2019-05-30T10:34:18'
-#            'duration_utc': datetime.timedelta(0, 22200),
+#            'duration_utc': 06:10:00,
 #            'target': ['24.0'],
 #            'run_duration': 22199.631192922592,
 #            'performance': ['Epoch: 5\tTraining: 47413 Tok/s\tValidation: 155072 Tok/s'],
@@ -307,9 +311,9 @@ def main():
     all_results = {}
     for case in ALL_CASES:
         if case == RNN_TRANSLATOR:
-            parser = Parser_RTR(LOGS_PATH, RNN_TRANSLATOR)
-        elif case == IMAGE_CLASSIFICATION:
-            parser = Parser_IMC(LOGS_PATH, case)
+            parser = Parser_RTR(LOGS_PATH, case)
+        elif case == TF_BENCHMARKS:
+            parser = Parser_TFB(LOGS_PATH, case)
         else:
             parser = Parser(LOGS_PATH, case)
 
