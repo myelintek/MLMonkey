@@ -1,13 +1,25 @@
 #!/bin/bash
-#record hardware spec
-mkdir -p /web
-lshw -html > /web/specs.html
+for ARGUMENT in "$@"
+do
+    KEY=$(echo $ARGUMENT | cut -f1 -d=)
+#    echo $KEY
+    VALUE=$(echo $ARGUMENT | cut -f2 -d=)   
+#    echo $VALUE
+    case "$KEY" in
+            rnn_translator_bs)              rnn_translator_bs=${VALUE} ;;
+            object_detection_bs)                  image_segm_bs=${VALUE} ;;     
+            num_gpus)                       num_gpus=${VALUE} ;;
+            *)   
+    esac    
+
+
+done
+
 mkdir -p /tmp/logs
 cd /workspace
-mkdir -p mlperf
 mkdir -p logs
 cd logs
-mkdir -p gpu_scalability fp16 COCO full_imagenet
+mkdir -p gpu_scalability fp16 full_imagenet
 cd /run_benchmarks/benchmarks/scripts/tf_cnn_benchmarks
 
 find_max_batch_size()
@@ -24,10 +36,21 @@ find_max_batch_size()
 
 export TIMEFORMAT='%E real,  %U user,  %S sys'
 
+get_gpus()
+{
+  n=$num_gpus
+  n_gpus=($num_gpus)
+  while (( $n>1 )); do
+    n=$(( $n / 2 ))
+    n_gpus=("${n_gpus[@]}" $n)     
+  done
+#  echo ${n_gpus[@]}
+}
+
 gpus_scalability_test()
 {
-  num_gpus=( 1 2 4 8 ) #TODO find number of gpus automaticaly
-  for gpus in ${num_gpus[@]}
+  get_gpus
+  for gpus in ${n_gpus[@]}
   do
     echo "Running gpu scalability test, output is redirected to /workspace/logs/gpu_scalability_fp16/$gpus.log"
     ( time python tf_cnn_benchmarks.py \
@@ -157,7 +180,7 @@ rnn_translator()
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator mlperf-nvidia:rnn_translator
   cd pytorch
-  DATADIR=$WORKDIR/datasets/rnn_translator LOGDIR=$WORKDIR/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
+  DATADIR=$WORKDIR/datasets/rnn_translator LOGDIR=/workspace/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
 }
 
 object_detection()
@@ -166,39 +189,50 @@ object_detection()
    if [ ! -d "/workspace/datasets/coco" ] ; then
      ./download_dataset.sh
    fi
-  ./download_weights.sh
   cd pytorch
-  ./convert_c2_model.py
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:object_detection
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:object_detection mlperf-nvidia:object_detection
-  docker run --runtime nvidia mlperf-nvidia:object_detection ./convert_c2_model.py
-  DATADIR=$WORKDIR/datasets/coco LOGDIR=$WORKDIR/logs/object_detection  ./run.sub  
+  DATADIR=$WORKDIR/datasets/coco LOGDIR=/workspace/logs/object_detection  ./run.sub  
 }
-#export bsfp16=128
-#export WORKDIR=/home/hpc2/workspace #TODO pass it on container start
+
+image_classification()
+{
+  cd /run_benchmarks/results/v0.5.0/nvidia/submission/code/image_classification/mxnet/
+  docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:image_classification
+  docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:image_classification mlperf-nvidia:image_classification
+  DATADIR=$WORKDIR/datasets/imagenet-mxnet/rec LOGDIR=/workspace/logs/image_classification  ./run.sub
+}
+
+get_cuda_p2p()
+{
+cd /workspace
+git clone https://github.com/NVIDIA/cuda-samples.git
+cd cuda-samples/
+git fetch && git fetch --tags
+git checkout v10.0 #TODO sync CUDA version with mlmonkey image
+cd Samples/p2pBandwidthLatencyTest/
+make
+mkdir -p /workspace/logs/hw_info
+./p2pBandwidthLatencyTest &> /workspace/logs/hw_info/p2p.log
+}
+
+hwinfo()
+{
+mkdir -p /workspace/logs/hw_info
+nvidia-smi &> /workspace/logs/hw_info/nvidia-smi.log
+lshw -html &> /workspace/logs/hw_info/lshw.html
+}
+
 find_max_batch_size
 gpus_scalability_test
 real_vs_synthetic_data
+sleep 60s
 full_imagenet
-#rnn_translator
-#object_detection
-
-#mlperf COCO	
-#cd /workspace/mlperf
-#if [ ! -d "/workspace/mlperf/training" ] ; then
-#  git clone https://github.com/mlperf/training.git
-#fi
-#cd training/object_detection/
-#cp /scripts/run_and_time_obj_detect.sh .
-#chmod +x run_and_time_obj_detect.sh
-#docker pull 140.96.29.39:5000/mlperf/object_detection:latest
-#if [ ! -d "pytorch/datasets/coco" ] ; then
-#  echo "Downloading COCO dataset"
-#  source download_dataset.sh
-#fi
-#echo "Running object detection training on COCO"
-#docker run --runtime nvidia -v $WORKDIR:/workspace -e MASTER_ADDR=localhost -e MASTER_PORT=4000 -e TIMEFORMAT="$TIMEFORMAT" -it --rm --ipc=host 140.96.29.39:5000/mlperf/object_detection:latest bash -c 'cd mlperf/training/object_detection && ./install.sh && ./run_and_time_obj_detect.sh' &> /workspace/logs/COCO/mlperf.log
-
-#parse logs to csv
-#mkdir -p /web/csv
-#python /scripts/parser.py
+sleep 60s
+rnn_translator
+sleep 60s
+object_detection
+image_classification
+sleep 10s
+hwinfo
+get_cuda_p2p
