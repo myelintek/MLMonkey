@@ -27,6 +27,7 @@ RUN apt-get install -y \
       lighttpd \
       lshw \
       bc \
+      pv \
       libnccl2=2.4.7-1+cuda10.0 \
       libnccl-dev=2.4.7-1+cuda10.0 \
       libcudnn7-dev=7.4.1.5-1+cuda10.0 \
@@ -70,5 +71,7 @@ RUN mkdir -p /web && \
     cd /scripts && \
     mv index.html /web && \
     mv lighttpd.conf /etc/lighttpd/lighttpd.conf 
+
+WORKDIR /scripts
 
 ENTRYPOINT bash
