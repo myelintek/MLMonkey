@@ -15,7 +15,7 @@ TFB_DIR=$LOG_RDIR/tf_benchmarks
 #OBD_DIR=$LOG_RDIR/object_detection
 
 RESNET_COMMON="--data_format=NCHW --model=resnet50 --optimizer=momentum \
- --variable_update=replicated --all_reduce_spec=nccl --nodistortions \
+ --variable_update=replicated --all_reduce_spec=nccl \
  --gradient_repacking=8 --use_fp16"
 
 find_max_batch_size()
@@ -115,7 +115,7 @@ full_imagenet()
         ${RESNET_COMMON} \
         --num_gpus=8 \
         --batch_size=$bsfp16 \
-        --num_epochs=90
+        --num_epochs=90 \
         --weight_decay=4e-5 \
         --data_dir=/tfrecords/ \
         --data_name=imagenet \
