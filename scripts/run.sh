@@ -7,7 +7,6 @@ cd /workspace
 mkdir -p mlperf
 mkdir -p logs
 cd logs
-mkdir -p gpu_scalability fp16 COCO full_imagenet
 cd /run_benchmarks/benchmarks/scripts/tf_cnn_benchmarks
 
 LOG_RDIR=/workspace/logs
@@ -103,6 +102,7 @@ real_vs_synthetic_data()
 
 full_imagenet()
 {
+  mkdir -p $TFB_DIR/full_imagenet
   #full imagenet training to 90 epoch with maximum batch size
   echo "Running full imagenet training, $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log"
   #scale lr according to batch size: batch_size=256, lr=0.1
