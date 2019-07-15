@@ -22,6 +22,11 @@ cd logs
 mkdir -p gpu_scalability fp16 full_imagenet
 cd /run_benchmarks/benchmarks/scripts/tf_cnn_benchmarks
 
+LOG_RDIR=/workspace/logs
+TFB_DIR=$LOG_RDIR/tf_benchmarks
+#RTR_DIR=$LOG_RDIR/rnn_translator
+#OBD_DIR=$LOG_RDIR/object_detection
+
 find_max_batch_size()
 {
   bs1gpu=( 1024 512 256 128 64 32 16 8 4 2 )
@@ -52,7 +57,7 @@ gpus_scalability_test()
   get_gpus
   for gpus in ${n_gpus[@]}
   do
-    echo "Running gpu scalability test, output is redirected to /workspace/logs/gpu_scalability_fp16/$gpus.log"
+    echo "Running gpu scalability test, output is redirected to $TFB_DIR/gpu_scalability_fp16/$gpus.log"
     ( time python tf_cnn_benchmarks.py \
                   --num_gpus=$gpus \
                   --batch_size=$bsfp16 \
@@ -60,14 +65,14 @@ gpus_scalability_test()
                   --model=resnet50 \
                   --variable_update=replicated \
                   --use_fp16 \
-                  --all_reduce_spec=nccl ) &> /workspace/logs/gpu_scalability/$gpus.log
+                  --all_reduce_spec=nccl ) &> $TFB_DIR/gpu_scalability/$gpus.log
   done
 }
 
 
 real_vs_synthetic_data()
 {
-  echo "Running real imagenet test, logs are redirected to /workspace/logs/fp16/imagenet.log"
+  echo "Running real imagenet test, logs are redirected to $TFB_DIR/fp16/imagenet.log"
   #real
   if [ -d "/tfrecords" ] ; then #if real data is not mounted skip the test
     ( time python tf_cnn_benchmarks.py \
@@ -84,7 +89,7 @@ real_vs_synthetic_data()
                   --weight_decay=1e-4 \
                   --data_dir=/tfrecords/ \
                   --data_name=imagenet \
-                  --use_fp16 ) &> /workspace/logs/fp16/imagenet.log 2>&1
+                  --use_fp16 ) &> $TFB_DIR/fp16/imagenet.log 2>&1
     return_code=$?
     #if there was an error, probably due to OOM, try reducing batch size
     if [ $return_code != 0 ]  ; then
@@ -104,13 +109,13 @@ real_vs_synthetic_data()
                     --weight_decay=1e-4 \
                     --data_dir=/tfrecords/ \
                     --data_name=imagenet \
-                    --use_fp16 ) &> /workspace/logs/fp16/imagenet.log
+                    --use_fp16 ) &> $TFB_DIR/fp16/imagenet.log
     fi
   else
-    echo "ERROR: /tfrecords folder is not found" > /workspace/logs/fp16/imagenet.log
+    echo "ERROR: /tfrecords folder is not found" > $TFB_DIR/fp16/imagenet.log
   fi
   #synthetic 
-  echo "Running synthetic data test, logs are redirected to /workspace/logs/fp16/synthetic.log"
+  echo "Running synthetic data test, logs are redirected to $TFB_DIR/fp16/synthetic.log"
   ( time python tf_cnn_benchmarks.py \
                 --all_reduce_spec=nccl \
                 --num_gpus=8 \
@@ -118,13 +123,13 @@ real_vs_synthetic_data()
                 --num_batches=1000 \
                 --model=resnet50 \
                 --variable_update=replicated \
-                --use_fp16 ) &> /workspace/logs/fp16/synthetic.log
+                --use_fp16 ) &> $TFB_DIR/fp16/synthetic.log
 }
 
 full_imagenet()
 {
   #full imagenet training to 90 epoch with maximum batch size
-  echo "Running full imagenet training, /workspace/logs/full_imagenet/train_ep90_bs$bsfp16.log"
+  echo "Running full imagenet training, $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log"
   #scale lr according to batch size: batch_size=256, lr=0.1
   lr1=$(echo "scale=6; $bsfp16 / 256 * 8 / 10" | bc )
   lr2=$(echo "scale=6; $lr1/10" | bc )
@@ -147,7 +152,7 @@ full_imagenet()
                 --use_fp16 \
                 --train_dir=/workspace/resnet50_train_full \
                 --num_learning_rate_warmup_epochs=5 \
-                --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" ) &> /workspace/logs/full_imagenet/train_ep90_bs$bsfp16.log 
+                --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" ) &> $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log 
   #eval
   python tf_cnn_benchmarks.py \
          --all_reduce_spec=nccl \
@@ -166,7 +171,7 @@ full_imagenet()
          --train_dir=/workspace/resnet50_train_full \
          --num_learning_rate_warmup_epochs=5 \
          --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" \
-         --eval &> /workspace/logs/full_imagenet/val_ep90_bs$bsfp16.log
+         --eval &> $TFB_DIR/full_imagenet/val_ep90_bs$bsfp16.log
 }
 
 #nvidia-optimized mlperf, default parameters
