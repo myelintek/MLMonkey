@@ -27,15 +27,27 @@ TFB_DIR=$LOG_RDIR/tf_benchmarks
 #RTR_DIR=$LOG_RDIR/rnn_translator
 #OBD_DIR=$LOG_RDIR/object_detection
 
+RESNET_COMMON="--data_format=NCHW --model=resnet50 --optimizer=momentum \
+ --variable_update=replicated --all_reduce_spec=nccl \
+ --gradient_repacking=8 --use_fp16"
+
 find_max_batch_size()
 {
-  bs1gpu=( 1024 512 256 128 64 32 16 8 4 2 )
+  mkdir -p /tmp/logs
+  #bs1gpu=( 1024 512 256 128 64 32 16 8 4 2 )
+  bs1gpu=( 128 64 32 16 8 4 2 )
   echo "Running Imagenet with Resnet50 benchmark"
   echo "Checking maximum possible batch size for fp16 with synthetic data"
   for bsize in ${bs1gpu[@]}
   do
-    python tf_cnn_benchmarks.py --num_gpus=8 --batch_size=$bsize --num_batches=10 --model=resnet50 --variable_update=replicated --use_fp16 --data_format=NCHW --optimizer=momentum --gradient_repacking=8  --all_reduce_spec=nccl &> /tmp/logs/find_max_bs_fp16.log
-    test $? -eq 0 && bsfp16=$bsize && echo "Maximum batch size for fp16 with synthetic data: $bsize" && break
+    python -u tf_cnn_benchmarks.py \
+        ${RESNET_COMMON} \
+        --num_gpus=1 \
+        --batch_size=$bsize \
+        --num_batches=10 \
+        --gpu_memory_frac_for_testing=0.8 2>&1 | tee /tmp/logs/find_max_bs_fp16.log | \
+        pv --eta --line-mode --name " Test Batch Size $bsize" -b -p --timer -s 166 > /dev/null
+    test ${PIPESTATUS[0]} -eq 0 && bsfp16=$bsize && echo "Maximum batch size for fp16 with synthetic data: $bsize" && break
   done
 }
 
@@ -54,62 +66,48 @@ get_gpus()
 
 gpus_scalability_test()
 {
+  mkdir -p $TFB_DIR/gpu_scalability
   get_gpus
   for gpus in ${n_gpus[@]}
   do
-    echo "Running gpu scalability test, output is redirected to $TFB_DIR/gpu_scalability_fp16/$gpus.log"
-    ( time python tf_cnn_benchmarks.py \
-                  --num_gpus=$gpus \
-                  --batch_size=$bsfp16 \
-                  --num_epochs=1 \
-                  --model=resnet50 \
-                  --variable_update=replicated \
-                  --use_fp16 \
-                  --all_reduce_spec=nccl ) &> $TFB_DIR/gpu_scalability/$gpus.log
+    echo "Running gpu scalability test, output is redirected to $TFB_DIR/gpu_scalability/$gpus.log"
+    ( time python -u tf_cnn_benchmarks.py \
+        ${RESNET_COMMON} \
+        --num_gpus=$gpus \
+        --batch_size=$bsfp16 \
+        --num_batches=2500 ) 2>&1 | tee $TFB_DIR/gpu_scalability/$gpus.log | \
+        pv --eta --line-mode --name " Scalability Test $gpus GPU(s)" -b -p --timer -s 415 > /dev/null
   done
 }
 
 
 real_vs_synthetic_data()
 {
+  mkdir -p $TFB_DIR/fp16
   echo "Running real imagenet test, logs are redirected to $TFB_DIR/fp16/imagenet.log"
   #real
   if [ -d "/tfrecords" ] ; then #if real data is not mounted skip the test
-    ( time python tf_cnn_benchmarks.py \
-                  --all_reduce_spec=nccl \
-                  --data_format=NCHW \
-                  --batch_size=$bsfp16 \
-                  --model=resnet50 \
-                  --optimizer=momentum \
-                  --variable_update=replicated \
-                  --nodistortions \
-                  --gradient_repacking=8 \
-                  --num_gpus=8 \
-                  --num_batches=1000 \
-                  --weight_decay=1e-4 \
-                  --data_dir=/tfrecords/ \
-                  --data_name=imagenet \
-                  --use_fp16 ) &> $TFB_DIR/fp16/imagenet.log 2>&1
-    return_code=$?
+    ( time python -u tf_cnn_benchmarks.py \
+         ${RESNET_COMMON} \
+         --num_gpus=8 \
+         --batch_size=$bsfp16 \
+         --num_batches=2500 \
+         --data_dir=/tfrecords \
+         --data_name=imagenet ) 2>&1 | tee $TFB_DIR/fp16/imagenet.log | \
+         pv --eta --line-mode --name " ResNet50 with ImageNet dataset" -b -p --timer -s 415 > /dev/null
+    return_code=${PIPESTATUS[0]}
     #if there was an error, probably due to OOM, try reducing batch size
     if [ $return_code != 0 ]  ; then
       bsfp16=$(($bsfp16 / 2))
       echo "Reduce batch size for real data: $bsfp16"
-      ( time python tf_cnn_benchmarks.py \
-                    --all_reduce_spec=nccl \
-                    --data_format=NCHW \
-                    --batch_size=$bsfp16 \
-                    --model=resnet50 \
-                    --optimizer=momentum \
-                    --variable_update=replicated \
-                    --nodistortions \
-                    --gradient_repacking=8 \
-                    --num_gpus=8 \
-                    --num_batches=1000 \
-                    --weight_decay=1e-4 \
-                    --data_dir=/tfrecords/ \
-                    --data_name=imagenet \
-                    --use_fp16 ) &> $TFB_DIR/fp16/imagenet.log
+      ( time python -u tf_cnn_benchmarks.py \
+            ${RESNET_COMMON} \
+            --num_gpus=8 \
+            --batch_size=$bsfp16 \
+            --num_batches=2500 \
+            --data_dir=/tfrecords \
+            --data_name=imagenet ) 2>&1 | tee $TFB_DIR/fp16/imagenet.log | \
+         pv --eta --line-mode --name " ResNet50 with ImageNet dataset" -b -p --timer -s 415 > /dev/null
     fi
   else
     echo "ERROR: /tfrecords folder is not found" > $TFB_DIR/fp16/imagenet.log
@@ -117,17 +115,18 @@ real_vs_synthetic_data()
   #synthetic 
   echo "Running synthetic data test, logs are redirected to $TFB_DIR/fp16/synthetic.log"
   ( time python tf_cnn_benchmarks.py \
-                --all_reduce_spec=nccl \
-                --num_gpus=8 \
-                --batch_size=$bsfp16 \
-                --num_batches=1000 \
-                --model=resnet50 \
-                --variable_update=replicated \
-                --use_fp16 ) &> $TFB_DIR/fp16/synthetic.log
+        ${RESNET_COMMON} \
+        --num_gpus=8 \
+        --batch_size=$bsfp16 \
+        --num_batches=2500 \
+        --data_name=imagenet ) 2>&1 | tee $TFB_DIR/fp16/synthetic.log | \
+        pv --eta --line-mode --name " ResNet50 with Synthetic dataset" -b -p --timer -s 415 > /dev/null
 }
+
 
 full_imagenet()
 {
+  mkdir -p $TFB_DIR/full_imagenet
   #full imagenet training to 90 epoch with maximum batch size
   echo "Running full imagenet training, $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log"
   #scale lr according to batch size: batch_size=256, lr=0.1
@@ -137,37 +136,24 @@ full_imagenet()
   lr4=$(echo "scale=6; $lr3/10" | bc ) 
   #train
   ( time python tf_cnn_benchmarks.py \
-                --all_reduce_spec=nccl \
-                --data_format=NCHW \
-                --batch_size=$bsfp16 \
-                --model=resnet50 \
-                --optimizer=momentum \
-                --variable_update=replicated \
-                --gradient_repacking=8 \
-                --num_gpus=8 \
-                --num_epochs=1 \
-                --weight_decay=4e-5 \
-                --data_dir=/tfrecords/ \
-                --data_name=imagenet \
-                --use_fp16 \
-                --train_dir=/workspace/resnet50_train_full \
-                --num_learning_rate_warmup_epochs=5 \
-                --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" ) &> $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log 
+        ${RESNET_COMMON} \
+        --num_gpus=8 \
+        --batch_size=$bsfp16 \
+        --num_epochs=90 \
+        --weight_decay=4e-5 \
+        --data_dir=/tfrecords/ \
+        --data_name=imagenet \
+        --train_dir=/workspace/resnet50_train_full \
+        --num_learning_rate_warmup_epochs=5 \
+        --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" ) &> $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log 
   #eval
   python tf_cnn_benchmarks.py \
-         --all_reduce_spec=nccl \
-         --data_format=NCHW \
-         --batch_size=$bsfp16 \
-         --model=resnet50 \
-         --optimizer=momentum \
-         --variable_update=replicated \
-         --gradient_repacking=8 \
+        ${RESNET_COMMON} \
          --num_gpus=8 \
+         --batch_size=$bsfp16 \
          --num_epochs=1 \
-         --weight_decay=4e-5 \
          --data_dir=/tfrecords/ \
          --data_name=imagenet \
-         --use_fp16 \
          --train_dir=/workspace/resnet50_train_full \
          --num_learning_rate_warmup_epochs=5 \
          --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" \
