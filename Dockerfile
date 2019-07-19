@@ -1,7 +1,7 @@
 FROM tensorflow/tensorflow:1.13.1-gpu-py3
 
-WORKDIR /root
-ENV HOME /root
+WORKDIR /workspace
+ENV HOME /workspace
 #ARG tensorflow_pip_spec="tf-nightly-gpu"
 
 # Add google-cloud-sdk to the source list
@@ -72,6 +72,4 @@ RUN mkdir -p /web && \
     mv index.html /web && \
     mv lighttpd.conf /etc/lighttpd/lighttpd.conf 
 
-WORKDIR /scripts
-
-ENTRYPOINT bash
+ENTRYPOINT bash /scripts/run.sh
