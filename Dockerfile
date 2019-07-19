@@ -5,7 +5,7 @@ ENV HOME /workspace
 #ARG tensorflow_pip_spec="tf-nightly-gpu"
 
 # Add google-cloud-sdk to the source list
-RUN apt-get install -y curl
+RUN sed -i 's/archive.ubuntu.com/tw.archive.ubuntu.com/g' /etc/apt/sources.list && apt-get install -y curl
 RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
