@@ -143,11 +143,13 @@ full_imagenet()
         --weight_decay=4e-5 \
         --data_dir=/tfrecords/ \
         --data_name=imagenet \
+        --print_training_accuracy=True \
         --train_dir=/workspace/resnet50_train_full \
         --num_learning_rate_warmup_epochs=5 \
-        --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" ) &> $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log 
+        --piecewise_learning_rate_schedule='$lr1;30;$lr2;60;$lr3;80;$lr4' ) 2>&1 | tee $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log | \
+        pv --eta --line-mode --name " ResNet with ImageNet dataset for 90 epochs" -b -p --timer -s 45000 > /dev/null
   #eval
-  python tf_cnn_benchmarks.py \
+  ( time python tf_cnn_benchmarks.py \
         ${RESNET_COMMON} \
          --num_gpus=8 \
          --batch_size=$bsfp16 \
@@ -157,7 +159,8 @@ full_imagenet()
          --train_dir=/workspace/resnet50_train_full \
          --num_learning_rate_warmup_epochs=5 \
          --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" \
-         --eval &> $TFB_DIR/full_imagenet/val_ep90_bs$bsfp16.log
+         --eval ) 2>&1 | tee $TFB_DIR/full_imagenet/val_ep90_bs$bsfp16.log | \
+         pv --eta --line-mode --name " ResNet evaluation" -b -p --timer -s 800 > /dev/null
 }
 
 #nvidia-optimized mlperf, default parameters
