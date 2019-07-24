@@ -270,7 +270,7 @@ sleep 60s
 rnn_translator
 sleep 60s
 object_detection
-image_classification
+# image_classification
 sleep 10s
 hwinfo
 get_cuda_p2p
