@@ -8,12 +8,18 @@ do
     object_detection_bs)   image_segm_bs=${VALUE} ;;
     num_gpus)              num_gpus=${VALUE} ;;
     debug)                 debug=${VALUE} ;;
+    quick)                 quick=${VALUE} ;;
     *)
   esac
 done
+
+total_gpus=`nvidia-smi -L | wc -l`
+echo "total # of gpu: $total_gpus"
+
 # default value
-num_gpus=${num_gpus:-8}
+num_gpus=${num_gpus:-$total_gpus}
 debug=${debug:-false}
+quick=${quick:-false}
 
 num_batches=2500
 # debug mode
@@ -39,6 +45,7 @@ RESNET_COMMON="--data_format=NCHW --model=resnet50 --optimizer=momentum \
  --variable_update=replicated --all_reduce_spec=nccl \
  --gradient_repacking=8 --use_fp16"
 
+
 find_max_batch_size()
 {
   # debug mode
@@ -62,6 +69,19 @@ find_max_batch_size()
         pv --eta --line-mode --name " Test Batch Size $bsize" -b -p --timer -s 166 > /dev/null
     test ${PIPESTATUS[0]} -eq 0 && bsfp16=$bsize && echo "Maximum batch size for fp16 with synthetic data: $bsize" && break
   done
+}
+
+quick_test()
+{
+  if ${quick} ; then
+    echo "start temperature stress test"
+    ( time python tf_cnn_benchmarks.py \
+          ${RESNET_COMMON} \
+          --num_gpus=$num_gpus \
+          --batch_size=$bsfp16 \
+          --num_epochs=10 ) 2>&1
+    exit
+  fi
 }
 
 export TIMEFORMAT='%E real,  %U user,  %S sys'
@@ -241,6 +261,7 @@ lshw -html &> /workspace/logs/hw_info/lshw.html
 }
 
 find_max_batch_size
+quick_test
 gpus_scalability_test
 real_vs_synthetic_data
 sleep 60s

@@ -72,4 +72,4 @@ RUN mkdir -p /web && \
     mv index.html /web && \
     mv lighttpd.conf /etc/lighttpd/lighttpd.conf 
 
-ENTRYPOINT bash /scripts/run.sh
+CMD ["bash", "/scripts/run.sh", "quick=true"]
