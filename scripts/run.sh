@@ -6,6 +6,7 @@ do
   case "$KEY" in
     rnn_translator_bs)     rnn_translator_bs=${VALUE} ;;
     object_detection_bs)   image_segm_bs=${VALUE} ;;
+    image_cl_bs)           image_cl_bs=${VALUE} ;;
     num_gpus)              num_gpus=${VALUE} ;;
     debug)                 debug=${VALUE} ;;
     quick)                 quick=${VALUE} ;;
@@ -28,6 +29,13 @@ if ${debug} ; then
   echo "hardcode num_batches to 100 in debug mode"
   num_batches=100
 fi
+
+rnn_translator_bs=${rnn_translator_bs:-128}
+image_segm_bs=${object_detection_bs:-128} 
+image_cl_bs=${image_cl_bs:-1024}
+num_gpus=${num_gpus:-8} 
+
+#echo $rnn_translator_bs
 
 mkdir -p /tmp/logs
 cd /workspace
@@ -123,7 +131,7 @@ real_vs_synthetic_data()
   if [ -d "/tfrecords" ] ; then #if real data is not mounted skip the test
     ( time python -u tf_cnn_benchmarks.py \
          ${RESNET_COMMON} \
-         --num_gpus=8 \
+         --num_gpus=$num_gpus \
          --batch_size=$bsfp16 \
          --num_batches=${num_batches} \
          --data_dir=/tfrecords \
@@ -136,7 +144,7 @@ real_vs_synthetic_data()
       echo "Reduce batch size for real data: $bsfp16"
       ( time python -u tf_cnn_benchmarks.py \
             ${RESNET_COMMON} \
-            --num_gpus=8 \
+            --num_gpus=$num_gpus \
             --batch_size=$bsfp16 \
             --num_batches=${num_batches} \
             --data_dir=/tfrecords \
@@ -150,7 +158,7 @@ real_vs_synthetic_data()
   echo "Running synthetic data test, logs are redirected to $TFB_DIR/fp16/synthetic.log"
   ( time python tf_cnn_benchmarks.py \
         ${RESNET_COMMON} \
-        --num_gpus=8 \
+        --num_gpus=$num_gpus \
         --batch_size=$bsfp16 \
         --num_batches=${num_batches} \
         --data_name=imagenet ) 2>&1 | tee $TFB_DIR/fp16/synthetic.log | \
@@ -172,7 +180,7 @@ full_imagenet()
   #full imagenet training to 90 epoch with maximum batch size
   echo "Running full imagenet training, $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log"
   #scale lr according to batch size: batch_size=256, lr=0.1
-  lr1=$(echo "scale=6; $bsfp16 / 256 * 8 / 10" | bc )
+  lr1=$(echo "scale=6; $bsfp16 / 256 * $num_gpus / 10" | bc )
   lr2=$(echo "scale=6; $lr1/10" | bc )
   lr3=$(echo "scale=6; $lr2/10" | bc )
   lr4=$(echo "scale=6; $lr3/10" | bc ) 
@@ -180,7 +188,7 @@ full_imagenet()
   [ -d "/workspace/resnet50_train_full" ] && rm -rf /workspace/resnet50_train_full
   ( time python tf_cnn_benchmarks.py \
         ${RESNET_COMMON} \
-        --num_gpus=8 \
+        --num_gpus=$num_gpus \
         --batch_size=$bsfp16 \
         ${TRAIN_STEPS} \
         --weight_decay=4e-5 \
@@ -194,7 +202,7 @@ full_imagenet()
   #eval
   ( time python tf_cnn_benchmarks.py \
         ${RESNET_COMMON} \
-        --num_gpus=8 \
+        --num_gpus=$num_gpus \
         --batch_size=$bsfp16 \
         ${VAL_STEPS} \
         --data_dir=/tfrecords/ \
@@ -217,6 +225,7 @@ rnn_translator()
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator mlperf-nvidia:rnn_translator
   cd pytorch
+#  sed -i "s/BATCH=[[:digit:]]*/BATCH=$rnn_translator_bs/g"  config_DGX1.sh
   DATADIR=$WORKDIR/datasets/rnn_translator LOGDIR=/workspace/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
 }
 
@@ -242,22 +251,22 @@ image_classification()
 
 get_cuda_p2p()
 {
-cd /workspace
-git clone https://github.com/NVIDIA/cuda-samples.git
-cd cuda-samples/
-git fetch && git fetch --tags
-git checkout v10.0 #TODO sync CUDA version with mlmonkey image
-cd Samples/p2pBandwidthLatencyTest/
-make
-mkdir -p /workspace/logs/hw_info
-./p2pBandwidthLatencyTest &> /workspace/logs/hw_info/p2p.log
+  cd /workspace
+  git clone https://github.com/NVIDIA/cuda-samples.git
+  cd cuda-samples/
+  git fetch && git fetch --tags
+  git checkout v10.0 #TODO sync CUDA version with mlmonkey image
+  cd Samples/p2pBandwidthLatencyTest/
+  make
+  mkdir -p /workspace/logs/hw_info
+  ./p2pBandwidthLatencyTest &> /workspace/logs/hw_info/p2p.log
 }
 
 hwinfo()
 {
-mkdir -p /workspace/logs/hw_info
-nvidia-smi &> /workspace/logs/hw_info/nvidia-smi.log
-lshw -html &> /workspace/logs/hw_info/lshw.html
+  mkdir -p /workspace/logs/hw_info
+  nvidia-smi &> /workspace/logs/hw_info/nvidia-smi.log
+  lshw -html &> /workspace/logs/hw_info/lshw.html
 }
 
 find_max_batch_size
