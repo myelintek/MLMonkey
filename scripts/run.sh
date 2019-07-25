@@ -33,7 +33,6 @@ fi
 rnn_translator_bs=${rnn_translator_bs:-128}
 image_segm_bs=${object_detection_bs:-128} 
 image_cl_bs=${image_cl_bs:-1024}
-num_gpus=${num_gpus:-8} 
 
 #echo $rnn_translator_bs
 
@@ -102,7 +101,6 @@ get_gpus()
     n=$(( $n / 2 ))
     n_gpus=("${n_gpus[@]}" $n)     
   done
-#  echo ${n_gpus[@]}
 }
 
 gpus_scalability_test()
@@ -225,7 +223,6 @@ rnn_translator()
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator mlperf-nvidia:rnn_translator
   cd pytorch
-#  sed -i "s/BATCH=[[:digit:]]*/BATCH=$rnn_translator_bs/g"  config_DGX1.sh
   DATADIR=$WORKDIR/datasets/rnn_translator LOGDIR=/workspace/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
 }
 
