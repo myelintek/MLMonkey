@@ -1,20 +1,34 @@
 #!/bin/bash
 for ARGUMENT in "$@"
 do
-    KEY=$(echo $ARGUMENT | cut -f1 -d=)
-#    echo $KEY
-    VALUE=$(echo $ARGUMENT | cut -f2 -d=)   
-#    echo $VALUE
-    case "$KEY" in
-            rnn_translator_bs)              rnn_translator_bs=${VALUE} ;;
-            object_detection_bs)            object_detection_bs=${VALUE} ;;     
-            image_classification_bs)                    image_classification_bs=${VALUE} ;;
-            num_gpus)                       num_gpus=${VALUE} ;;
-            *)   
-    esac    
-
-
+  KEY=$(echo $ARGUMENT | cut -f1 -d=)
+  VALUE=$(echo $ARGUMENT | cut -f2 -d=)
+  case "$KEY" in
+    rnn_translator_bs)     rnn_translator_bs=${VALUE} ;;
+    object_detection_bs)   image_segm_bs=${VALUE} ;;
+    image_cl_bs)           image_cl_bs=${VALUE} ;;
+    num_gpus)              num_gpus=${VALUE} ;;
+    debug)                 debug=${VALUE} ;;
+    quick)                 quick=${VALUE} ;;
+    *)
+  esac
 done
+
+total_gpus=`nvidia-smi -L | wc -l`
+echo "total # of gpu: $total_gpus"
+
+# default value
+num_gpus=${num_gpus:-$total_gpus}
+debug=${debug:-false}
+quick=${quick:-false}
+
+num_batches=2500
+# debug mode
+if ${debug} ; then
+  echo "!!!debug mode!!!"
+  echo "hardcode num_batches to 100 in debug mode"
+  num_batches=100
+fi
 
 rnn_translator_bs=${rnn_translator_bs:-128}
 object_detection_bs=${object_detection_bs:-128} 
@@ -37,11 +51,17 @@ RESNET_COMMON="--data_format=NCHW --model=resnet50 --optimizer=momentum \
  --variable_update=replicated --all_reduce_spec=nccl \
  --gradient_repacking=8 --use_fp16"
 
+
 find_max_batch_size()
 {
+  # debug mode
+  if ${debug} ; then
+    echo "hardcode batch size to 128 in debug mode."
+    bsfp16=128
+    return
+  fi
   mkdir -p /tmp/logs
   bs1gpu=( 1024 512 256 128 64 32 16 8 4 2 )
-  #bs1gpu=( 128 64 32 16 8 4 2 )
   echo "Running Imagenet with Resnet50 benchmark"
   echo "Checking maximum possible batch size for fp16 with synthetic data"
   for bsize in ${bs1gpu[@]}
@@ -55,6 +75,19 @@ find_max_batch_size()
         pv --eta --line-mode --name " Test Batch Size $bsize" -b -p --timer -s 166 > /dev/null
     test ${PIPESTATUS[0]} -eq 0 && bsfp16=$bsize && echo "Maximum batch size for fp16 with synthetic data: $bsize" && break
   done
+}
+
+quick_test()
+{
+  if ${quick} ; then
+    echo "start temperature stress test"
+    ( time python tf_cnn_benchmarks.py \
+          ${RESNET_COMMON} \
+          --num_gpus=$num_gpus \
+          --batch_size=$bsfp16 \
+          --num_epochs=10 ) 2>&1
+    exit
+  fi
 }
 
 export TIMEFORMAT='%E real,  %U user,  %S sys'
@@ -73,6 +106,7 @@ gpus_scalability_test()
 {
   mkdir -p $TFB_DIR/gpu_scalability
   get_gpus
+  echo "Run gpu scalability test for ${n_gpus[@]} GPUs"
   for gpus in ${n_gpus[@]}
   do
     echo "Running gpu scalability test, output is redirected to $TFB_DIR/gpu_scalability/$gpus.log"
@@ -80,7 +114,7 @@ gpus_scalability_test()
         ${RESNET_COMMON} \
         --num_gpus=$gpus \
         --batch_size=$bsfp16 \
-        --num_batches=2500 ) 2>&1 | tee $TFB_DIR/gpu_scalability/$gpus.log | \
+        --num_batches=${num_batches} ) 2>&1 | tee $TFB_DIR/gpu_scalability/$gpus.log | \
         pv --eta --line-mode --name " Scalability Test $gpus GPU(s)" -b -p --timer -s 415 > /dev/null
   done
 }
@@ -96,7 +130,7 @@ real_vs_synthetic_data()
          ${RESNET_COMMON} \
          --num_gpus=$num_gpus \
          --batch_size=$bsfp16 \
-         --num_batches=2500 \
+         --num_batches=${num_batches} \
          --data_dir=/tfrecords \
          --data_name=imagenet ) 2>&1 | tee $TFB_DIR/fp16/imagenet.log | \
          pv --eta --line-mode --name " ResNet50 with ImageNet dataset" -b -p --timer -s 415 > /dev/null
@@ -109,7 +143,7 @@ real_vs_synthetic_data()
             ${RESNET_COMMON} \
             --num_gpus=$num_gpus \
             --batch_size=$bsfp16 \
-            --num_batches=2500 \
+            --num_batches=${num_batches} \
             --data_dir=/tfrecords \
             --data_name=imagenet ) 2>&1 | tee $TFB_DIR/fp16/imagenet.log | \
          pv --eta --line-mode --name " ResNet50 with ImageNet dataset" -b -p --timer -s 415 > /dev/null
@@ -123,7 +157,7 @@ real_vs_synthetic_data()
         ${RESNET_COMMON} \
         --num_gpus=$num_gpus \
         --batch_size=$bsfp16 \
-        --num_batches=2500 \
+        --num_batches=${num_batches} \
         --data_name=imagenet ) 2>&1 | tee $TFB_DIR/fp16/synthetic.log | \
         pv --eta --line-mode --name " ResNet50 with Synthetic dataset" -b -p --timer -s 415 > /dev/null
 }
@@ -131,6 +165,14 @@ real_vs_synthetic_data()
 
 full_imagenet()
 {
+  # debug mode
+  if ${debug} ; then
+    TRAIN_STEPS="--num_batches=100"
+    VAL_STEPS="--num_batches=100"
+  else
+    TRAIN_STEPS="--num_epochs=90"
+    VAL_STEPS="--num_epochs=1"
+  fi
   mkdir -p $TFB_DIR/full_imagenet
   #full imagenet training to 90 epoch with maximum batch size
   echo "Running full imagenet training, $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log"
@@ -140,11 +182,12 @@ full_imagenet()
   lr3=$(echo "scale=6; $lr2/10" | bc )
   lr4=$(echo "scale=6; $lr3/10" | bc ) 
   #train
+  [ -d "/workspace/resnet50_train_full" ] && rm -rf /workspace/resnet50_train_full
   ( time python tf_cnn_benchmarks.py \
         ${RESNET_COMMON} \
         --num_gpus=$num_gpus \
         --batch_size=$bsfp16 \
-        --num_epochs=90 \
+        ${TRAIN_STEPS} \
         --weight_decay=4e-5 \
         --data_dir=/tfrecords/ \
         --data_name=imagenet \
@@ -156,16 +199,16 @@ full_imagenet()
   #eval
   ( time python tf_cnn_benchmarks.py \
         ${RESNET_COMMON} \
-         --num_gpus=$num_gpus \
-         --batch_size=$bsfp16 \
-         --num_epochs=1 \
-         --data_dir=/tfrecords/ \
-         --data_name=imagenet \
-         --train_dir=/workspace/resnet50_train_full \
-         --num_learning_rate_warmup_epochs=5 \
-         --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" \
-         --eval ) 2>&1 | tee $TFB_DIR/full_imagenet/val_ep90_bs$bsfp16.log | \
-         pv --eta --line-mode --name " ResNet evaluation" -b -p --timer -s 800 > /dev/null
+        --num_gpus=$num_gpus \
+        --batch_size=$bsfp16 \
+        ${VAL_STEPS} \
+        --data_dir=/tfrecords/ \
+        --data_name=imagenet \
+        --train_dir=/workspace/resnet50_train_full \
+        --num_learning_rate_warmup_epochs=5 \
+        --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" \
+        --eval ) 2>&1 | tee $TFB_DIR/full_imagenet/val_ep90_bs$bsfp16.log | \
+        pv --eta --line-mode --name " ResNet evaluation" -b -p --timer -s 800 > /dev/null
 }
 
 #nvidia-optimized mlperf, default parameters
@@ -230,6 +273,7 @@ hwinfo()
 }
 
 find_max_batch_size
+quick_test
 gpus_scalability_test
 real_vs_synthetic_data
 sleep 60s
@@ -238,8 +282,7 @@ sleep 60s
 rnn_translator
 sleep 60s
 object_detection
-#sleep 60s
-#image_classification
+# image_classification
 sleep 10s
 hwinfo
 get_cuda_p2p
