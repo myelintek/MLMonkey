@@ -8,7 +8,7 @@ do
     case "$KEY" in
             rnn_translator_bs)              rnn_translator_bs=${VALUE} ;;
             object_detection_bs)            object_detection_bs=${VALUE} ;;     
-            image_cl_bs)                    image_cl_bs=${VALUE} ;;
+            image_classification_bs)                    image_classification_bs=${VALUE} ;;
             num_gpus)                       num_gpus=${VALUE} ;;
             *)   
     esac    
@@ -17,11 +17,9 @@ do
 done
 
 rnn_translator_bs=${rnn_translator_bs:-128}
-image_segm_bs=${object_detection_bs:-128} 
-image_cl_bs=${image_cl_bs:-1024}
+object_detection_bs=${object_detection_bs:-128} 
+image_classification_bs=${image_classification_bs:-1664}
 num_gpus=${num_gpus:-8} 
-
-#echo $rnn_translator_bs
 
 mkdir -p /tmp/logs
 cd /workspace
@@ -69,7 +67,6 @@ get_gpus()
     n=$(( $n / 2 ))
     n_gpus=("${n_gpus[@]}" $n)     
   done
-#  echo ${n_gpus[@]}
 }
 
 gpus_scalability_test()
@@ -154,7 +151,7 @@ full_imagenet()
         --print_training_accuracy=True \
         --train_dir=/workspace/resnet50_train_full \
         --num_learning_rate_warmup_epochs=5 \
-        --piecewise_learning_rate_schedule='$lr1;30;$lr2;60;$lr3;80;$lr4' ) 2>&1 | tee $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log | \
+        --piecewise_learning_rate_schedule="$lr1;30;$lr2;60;$lr3;80;$lr4" ) 2>&1 | tee $TFB_DIR/full_imagenet/train_ep90_bs$bsfp16.log | \
         pv --eta --line-mode --name " ResNet with ImageNet dataset for 90 epochs" -b -p --timer -s 45000 > /dev/null
   #eval
   ( time python tf_cnn_benchmarks.py \
@@ -182,7 +179,9 @@ rnn_translator()
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:rnn_translator mlperf-nvidia:rnn_translator
   cd pytorch
-#  sed -i "s/BATCH=[[:digit:]]*/BATCH=$rnn_translator_bs/g"  config_DGX1.sh
+  sed -i "s/BATCH=[[:digit:]]*/BATCH=$rnn_translator_bs/g"  config_DGX1.sh
+  sed -i "s/TEST_BATCH_SIZE=[[:digit:]]*/TEST_BATCH_SIZE=$rnn_translator_bs/g"  config_DGX1.sh
+  sed -i "s/DGXNGPU=[[:digit:]]*/DGXNGPU=$num_gpus/g"  config_DGX1.sh
   DATADIR=$WORKDIR/datasets/rnn_translator LOGDIR=/workspace/logs/rnn_translator DGXSYSTEM=DGX1 ./run.sub
 }
 
@@ -195,6 +194,8 @@ object_detection()
   cd pytorch
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:object_detection
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:object_detection mlperf-nvidia:object_detection
+#  sed -i "s/BATCH=[[:digit:]]*/BATCH=$object_detection_bs/g"  config_DGX1.sh
+  sed -i "s/DGXNGPU=[[:digit:]]*/DGXNGPU=$num_gpus/g"  config_DGX1.sh
   DATADIR=$WORKDIR/datasets/coco LOGDIR=/workspace/logs/object_detection  ./run.sub  
 }
 
@@ -203,6 +204,8 @@ image_classification()
   cd /run_benchmarks/results/v0.5.0/nvidia/submission/code/image_classification/mxnet/
   docker pull 140.96.29.39:5000/myelintek/mlperf-nvidia:image_classification
   docker tag 140.96.29.39:5000/myelintek/mlperf-nvidia:image_classification mlperf-nvidia:image_classification
+  sed -i "s/BATCHSIZE=[[:digit:]]*/BATCHSIZE=$image_classification_bs/g"  config_DGX1.sh
+  sed -i "s/DGXNGPU=[[:digit:]]*/DGXNGPU=$num_gpus/g"  config_DGX1.sh
   DATADIR=$WORKDIR/datasets/imagenet-mxnet/rec LOGDIR=/workspace/logs/image_classification  ./run.sub
 }
 
@@ -235,8 +238,8 @@ sleep 60s
 rnn_translator
 sleep 60s
 object_detection
-sleep 60s
-image_classification
+#sleep 60s
+#image_classification
 sleep 10s
 hwinfo
 get_cuda_p2p
