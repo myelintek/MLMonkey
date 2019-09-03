@@ -38,12 +38,14 @@ num_gpus=${num_gpus:-8}
 mkdir -p /tmp/logs
 cd /workspace
 mkdir -p logs
-cd logs
-mkdir -p gpu_scalability fp16 full_imagenet
-cd /run_benchmarks/benchmarks/scripts/tf_cnn_benchmarks
-
 LOG_RDIR=/workspace/logs
 TFB_DIR=$LOG_RDIR/tf_benchmarks
+mkdir -p $TFB_DIR
+cd $TFB_DIR
+mkdir -p gpu_scalability fp16 full_imagenet
+
+cd /run_benchmarks/benchmarks/scripts/tf_cnn_benchmarks
+
 #RTR_DIR=$LOG_RDIR/rnn_translator
 #OBD_DIR=$LOG_RDIR/object_detection
 
