@@ -1,9 +1,18 @@
-To start benchmark:
+To start quick test(default, no output logs) benchmark:
 ```
 export WORKDIR=/home/user/workspace
 docker pull 140.96.29.39:5000/myelintek/mlmonkey:latest
 docker run -it --runtime nvidia -v $WORKDIR:/workspace -v /var/run/docker.sock:/var/run/docker.sock -v /path/to/Imagenet:/tfrecords -e WORKDIR=$WORKDIR 140.96.29.39:5000/myelintek/mlmonkey:latest
 ```
+
+To start full training:
+```
+export WORKDIR=/home/user/workspace
+docker pull 140.96.29.39:5000/myelintek/mlmonkey:latest
+docker run -it --runtime nvidia -v $WORKDIR:/workspace -v /var/run/docker.sock:/var/run/docker.sock -v /path/to/Imagenet:/tfrecords -e WORKDIR=$WORKDIR 140.96.29.39:5000/myelintek/mlmonkey:latest bash /scripts/run.sh quick=false
+```
+If gpu is 1080ti or smaller (less than 12Gb) batch size for rnn_translator test case needs to be adjusted e.g. `bash /scripts/run.sh rnn_translator_bs=64 quick=false`
+
 Make sure there is enough disk space, script will download COCO and Translator datasets automatically.
 Imagenet should be in tfrecords format.
 
