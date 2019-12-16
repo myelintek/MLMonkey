@@ -12,7 +12,7 @@ sklearn
 pandas
 gevent
 requests
-tensorflow-gpu==1.12.0
+tensorflow-gpu==1.15.0
 cu90/torch-1.0.0-cp27-cp27mu-linux_x86_64.whl
 torchvision==0.2.2
 mlperf-compliance==0.0.7
